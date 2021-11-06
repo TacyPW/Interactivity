@@ -1,0 +1,16 @@
+void setup() {
+  colorMode(HSB, 360, 255, 255 ,1);
+  size(800 , 1100);
+  background(0, 0, 255, 1);
+}
+ 
+void draw() {
+  strokeWeight(10);
+  rect(50, 0, 0, 1000);
+  fill(0, 0, 0, 1);
+  rect(100, 300, 500, 600);
+
+
+
+
+}

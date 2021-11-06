@@ -1,0 +1,59 @@
+
+int brush = 0;
+String title = "Cadavre Exquis";
+
+void setup() {
+  size(800, 900);
+}
+
+void draw() {
+  writeScreen();
+}
+
+void writeScreen() {
+  background(#C3A268);
+  noStroke();
+
+
+  rect(200, 150, 400, 175);
+  rect(150, 150, 40, 175);
+  rect(610, 150, 40, 175);
+
+  rect(200, 335, 400, 175);
+  rect(150, 335, 40, 175);
+  rect(610, 335, 40, 175);
+
+  rect(200, 520, 400, 175);
+  rect(150, 520, 40, 175);
+  rect(610, 520, 40, 175);
+
+  square(200, 705, 50);
+  square(300, 705, 50);
+  square(400, 705, 50);
+  square(500, 705, 50);
+}
+
+void line_brush(float x, float y, float width) {
+}
+
+void hair_brush(float x, float y, float width) {
+}
+
+void dot_brush(float x, float y, float width) {
+}
+
+void keyPressed() {
+
+  if (key == 'h') {
+    brush = 3;
+  } else if (key == 'l') {
+    brush = 1;
+  }
+} else if (key == 'd') {
+  brush = 2;
+} 
+}   else {
+
+  println(keyCode "isn't assigned");
+}
+}

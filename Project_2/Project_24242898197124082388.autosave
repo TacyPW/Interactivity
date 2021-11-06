@@ -1,0 +1,78 @@
+void setup() {
+  // noLoop();
+  size(1000, 700);
+  colorMode(HSB, 360, 100, 100, 100);
+  ellipseMode(CENTER);
+}
+
+// variable besties we stan
+float spiciness = constrain(spiciness, -1, 1);
+int hella = 0;
+
+
+// function defs
+void protein(float x, float y, float radius, float spiciness, int vertices) {
+  if (vertices <= 1) {
+    vertices = 7;
+  }
+  float var_dist = radius + (spiciness * (radius*0.5));
+  float angle = TAU / vertices;
+  int index = 0;
+  float[] points;
+  points = new float[1];
+  points = new float[0];
+
+  
+
+  
+  for (int i = 1; i <= vertices; ++i) {
+    float current_angle = angle*i;
+
+    float c = var_dist * cos(current_angle + angle / 2);
+    float d = var_dist * sin(current_angle + angle / 2); 
+    float final_x_var = x + c;
+    float final_y_var = y + d;
+    points = append(points, final_x_var);
+    points = append(points, final_y_var);
+
+    
+    float a = radius * cos(current_angle + angle);
+    float b = radius * sin(current_angle + angle); 
+    float final_x = (x + a);
+    float final_y = (y + b);
+    points = append(points, final_x);
+    points = append(points, final_y);
+  }
+
+  beginShape();
+    for (int i = 0; i<vertices; ++i) {
+    index = i*4;
+    // circle(points[index+0], points[index+1], 20);
+    curveVertex(points[index+0], points[index+1]);
+    curveVertex(points[index+0], points[index+1]);
+    vertex(points[index+0], points[index+1]);
+    curveVertex(points[index+0], points[index+1]);
+    curveVertex(points[index+0], points[index+1]);
+    curveVertex(points[index+2], points[index+3]);
+    // circle(points[index+2], points[index+3], 20);
+    }
+
+    curveVertex(points[0], points[1]);
+    curveVertex(points[0], points[1]);
+    vertex(points[0], points[1]);
+    curveVertex(points[0], points[1]);
+    curveVertex(points[0], points[1]);
+    curveVertex(points[2], points[3]);
+  endShape(CLOSE);
+}
+
+
+void draw() {
+  spiciness = 1;
+  background(#FFFFFF);
+  noStroke();
+  color protein_color = (50
+  fill(#FF0000);
+  protein(200, 300, 50, spiciness, 2);100
+  protein(500, 100, 50, spiciness, 49);
+}
