@@ -1,39 +1,47 @@
 
-class item {
+public class item {
     int tag;
     String description;
     PImage item_img;
 
-    item(String tg, float x, float y)) {
-        description = concat("this is the\ " + str(tg));
+
+
+    public item (String tg, float x, float y) {
+        this.description = concat("this is the\ " + str(tg));
         
-        tag = tg;
+        this.tag = tg;
 
         file = concat(str(tg) + ".svg")
-        back_img = loadshape(file);
+        this.back_img = loadshape(file);
     }
     
     void render_back() {
-        background(#FFFFFF);
-        shape(back_img, 0, 0, width, height);
+        b
     }
 }
 
 
 item[] items = {
-    new item(tag, x, y, ); ,
-    new item(tag, x, y, ); ,
-    new item(tag, x, y, ); ,
+    // room 4
+    new item(tag, x, y); ,
 
-    new item(tag, x, y, ); ,
-    new item(tag, x, y, ); ,
-    new item(tag, x, y, ); ,
+    // room 5
+    new item(tag, x, y); ,
+    new item(tag, x, y); ,
+    new item(tag, x, y); ,
 
-    new item(tag, x, y, ); ,
-    new item(tag, x, y, ); ,
-    new item(tag, x, y, ); ,
-    
-    new item(tag, x, y, ); ,
-    new item(tag, x, y, ); ,
-    new item(tag, x, y, ); 
+    // room 6
+    new item(tag, x, y); ,
+    new item(tag, x, y); ,
+    new item(tag, x, y); ,
+
+    // room 7
+    new item(tag, x, y); ,
+    new item(tag, x, y); ,
+    new item(tag, x, y); ,
+
+    // room 8
+    new item(tag, x, y); ,
+    new item(tag, x, y); ,
+    new item(tag, x, y); 
 }

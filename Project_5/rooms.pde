@@ -3,7 +3,7 @@ class Room {
     String description;
     PShape back_img;
 
-    Room(int idx, ) {
+    Room(int idx) {
         description = concat("this is room number\ " + str(idx));
         
         index = idx;
@@ -31,5 +31,11 @@ Room[] rooms = {
     new Room(9); ,
     new Room(10); ,
     new Room(11); ,
-    new Room(12); 
+    new Room(12); ,
+    new Room(13); ,
+    new Room(14); ,
+    new Room(15); ,
+    new Room(16); ,
+    new Room(17); ,
+    new Room(18); 
 }

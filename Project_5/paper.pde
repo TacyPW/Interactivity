@@ -1,4 +1,4 @@
-public class paper {
+public class Paper {
     // background
     PShape img;
     img = loadshape("paper/paper.svg");
@@ -12,12 +12,12 @@ public class paper {
     // desc
     String description;
 
-    public paper () {
+    public Paper () {
         description = "the paper"
     }
 
     public void render_paper () {
-        
+
     }
 
 }
