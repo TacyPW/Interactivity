@@ -31,5 +31,5 @@ Room[] rooms = {
     new Room(9); ,
     new Room(10); ,
     new Room(11); ,
-    new Room(12);
+    new Room(12); 
 }
