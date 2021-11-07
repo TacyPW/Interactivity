@@ -1,12 +1,12 @@
 
-public class item {
+public class Item {
     int tag;
     String description;
     PImage item_img;
 
 
 
-    public item (String tg, float x, float y) {
+    public Item (String tg, float x, float y) {
         this.description = concat("this is the\ " + str(tg));
         
         this.tag = tg;
