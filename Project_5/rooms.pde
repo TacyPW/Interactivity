@@ -19,6 +19,7 @@ class Room {
     }
 
     void render_items() {
+
         blendMode(MULTIPLY);
         Items[item_1].render_item();
         Items[item_2].render_item();
@@ -28,12 +29,12 @@ class Room {
 
     void room_driver() {
         if (stage_iterator == 0) {
-            render_back();
-            render_items();
-            
+            this.render_back();
+            this.render_items();
+
         }
         else if (stage_iterator == 1) {
-            render_back();
+            this.render_back();
             Sheet.render_transparency();
             Sheet.render_paper();
 
