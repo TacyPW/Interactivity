@@ -19,10 +19,6 @@ class Room {
     }
 
     void render_items() {
-        int item_1 = collage_iterator * 3;
-        int item_2 = collage_iterator * 3 - 1;
-        int item_3 = collage_iterator * 3 - 2;
-
         blendMode(MULTIPLY);
         Items[item_1].render_item();
         Items[item_2].render_item();
@@ -34,7 +30,7 @@ class Room {
         if (stage_iterator == 0) {
             render_back();
             render_items();
-            stage_iterator++;
+            
         }
         else if (stage_iterator == 1) {
             render_back();
