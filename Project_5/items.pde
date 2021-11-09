@@ -1,47 +1,31 @@
+// there will be 28 Items across 10 rooms
+
+//DELETE
+String tag = "coin";
+float x = 0.0;
+float y = 0.0;
+//DELETE
 
 public class Item {
-    int tag;
+    String tag;
     String description;
     PImage item_img;
+    float pos_x;
+    float pos_y;
 
-
-
-    public Item (String tg, float x, float y) {
-        this.description = concat("this is the\ " + str(tg));
+    public Item(String tg, float x, float y) {
+        description = "this is the" + tg;
         
-        this.tag = tg;
+        tag = tg;
+        pos_x = x;
+        pos_y = y;
 
-        file = concat(str(tg) + ".svg")
-        this.back_img = loadshape(file);
+        String file = tg + ".png";
+        item_img = loadImage(file);
     }
     
-    void render_back() {
-        b
+    void render_item() {
+        image(this.item_img, pos_x, pos_y, 100, 100);
     }
 }
 
-
-item[] items = {
-    // room 4
-    new item(tag, x, y); ,
-
-    // room 5
-    new item(tag, x, y); ,
-    new item(tag, x, y); ,
-    new item(tag, x, y); ,
-
-    // room 6
-    new item(tag, x, y); ,
-    new item(tag, x, y); ,
-    new item(tag, x, y); ,
-
-    // room 7
-    new item(tag, x, y); ,
-    new item(tag, x, y); ,
-    new item(tag, x, y); ,
-
-    // room 8
-    new item(tag, x, y); ,
-    new item(tag, x, y); ,
-    new item(tag, x, y); 
-}

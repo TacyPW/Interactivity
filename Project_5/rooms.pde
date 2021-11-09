@@ -4,38 +4,50 @@ class Room {
     PShape back_img;
 
     Room(int idx) {
-        description = concat("this is room number\ " + str(idx));
+        // description = "this is room number" + str(idx);
         
         index = idx;
 
-        file = concat(str(idx) + ".svg")
-        back_img = loadshape(file);
+        String file = str(idx) + ".svg";
+        println(file);
+        back_img = loadShape(str(idx) + ".svg");
     }
     
     void render_back() {
         background(#FFFFFF);
         shape(back_img, 0, 0, width, height);
     }
+
+    void render_items() {
+        int item_1 = collage_iterator * 3;
+        int item_2 = collage_iterator * 3 - 1;
+        int item_3 = collage_iterator * 3 - 2;
+
+        blendMode(MULTIPLY);
+        Items[item_1].render_item();
+        Items[item_2].render_item();
+        Items[item_3].render_item();
+        blendMode(BLEND);
+    }
+
+    void room_driver() {
+        if (stage_iterator == 0) {
+            render_back();
+            render_items();
+            stage_iterator++;
+        }
+        else if (stage_iterator == 1) {
+            render_back();
+            Sheet.render_transparency();
+            Sheet.render_paper();
+
+            stage_iterator++;
+        }
+        else if (stage_iterator == 2) {
+            
+            stage_iterator = 0;
+        }
+
+    }
 }
 
-
-Room[] rooms = {
-    new Room(1); ,
-    new Room(2); ,
-    new Room(3); ,
-    new Room(4); ,
-    new Room(5); ,
-    new Room(6); ,
-    new Room(7); ,
-    new Room(8); ,
-    new Room(9); ,
-    new Room(10); ,
-    new Room(11); ,
-    new Room(12); ,
-    new Room(13); ,
-    new Room(14); ,
-    new Room(15); ,
-    new Room(16); ,
-    new Room(17); ,
-    new Room(18); 
-}
