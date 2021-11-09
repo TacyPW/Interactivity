@@ -4,13 +4,16 @@ class Room {
     PShape back_img;
 
     Room(int idx) {
-        // description = "this is room number" + str(idx);
-        
         index = idx;
 
         String file = str(idx) + ".svg";
         println(file);
         back_img = loadShape(str(idx) + ".svg");
+    }
+
+    Room(int idx, String file) {
+        index = idx;
+        back_img = loadShape(file);
     }
     
     void render_back() {
@@ -28,22 +31,20 @@ class Room {
     }
 
     void room_driver() {
-        if (stage_iterator == 0) {
+        if (stage_iterator <= 0) {
             this.render_back();
             this.render_items();
-
         }
-        else if (stage_iterator == 1) {
-            this.render_back();
-            Sheet.render_transparency();
-            Sheet.render_paper();
-
-            stage_iterator++;
-        }
-        else if (stage_iterator == 2) {
+        // else if (stage_iterator == 1) {
+        //     this.render_back();
+        //     Sheet.render_transparency();
+        //     Sheet.render_paper();
+        //     Sheet.item_brush(Sheet.ChosenItems[]);
             
-            stage_iterator = 0;
-        }
+        // }
+        // else if (stage_iterator == 2) {
+            
+        // }
 
     }
 }

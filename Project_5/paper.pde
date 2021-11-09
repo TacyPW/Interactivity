@@ -13,7 +13,7 @@ public class Paper {
     String description;
 
     // Collage Items
-    ArrayList<Item> ChosenItems = new ArrayList<Item>();
+    Item[] ChosenItems = new Item[10];
 
     // Constructors
     public Paper() {
@@ -22,10 +22,10 @@ public class Paper {
 
     // Member Funcs
     public void render_paper() {
+        render_transparency();
         shape(bak, 10 * vw, 10 * vh, 90 * vw, 90 * vh);
-        for (int i = 0; i < ChosenItems.size(); ++i) {
-            Item piece = ChosenItems.get(i);
-            piece.final_render();
+        for (int i = 0; i < collage_iterator; ++i) {
+            ChosenItems[i].final_render();
         }
     }
 
@@ -34,8 +34,8 @@ public class Paper {
         rect(0, 0, width, height);
     }
 
-    public void item_brush(Item brushtip) {
-        brushtip.render_item(mouseX, mouseY);
+    public void item_brush(Item[] brushtip) {
+        brushtip[collage_iterator].render_item(mouseX, mouseY);
     }
 
 }
