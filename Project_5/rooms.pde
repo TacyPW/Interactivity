@@ -19,9 +19,6 @@ class Room {
     }
 
     void render_items() {
-        int item_1 = collage_iterator * 3;
-        int item_2 = collage_iterator * 3 - 1;
-        int item_3 = collage_iterator * 3 - 2;
 
         blendMode(MULTIPLY);
         Items[item_1].render_item();
@@ -32,12 +29,12 @@ class Room {
 
     void room_driver() {
         if (stage_iterator == 0) {
-            render_back();
-            render_items();
-            stage_iterator++;
+            this.render_back();
+            this.render_items();
+
         }
         else if (stage_iterator == 1) {
-            render_back();
+            this.render_back();
             Sheet.render_transparency();
             Sheet.render_paper();
 

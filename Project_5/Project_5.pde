@@ -2,22 +2,30 @@
 Item[] Items;
 Paper Sheet;
 Room[] rooms;
-Item[] chosen_items = new Item[10];
 
 // State Tracking
 int room_iterator = 0;
 int stage_iterator = 0;
 int collage_iterator = 0; 
 
+int item_1 = collage_iterator * 3;
+int item_2 = collage_iterator * 3 - 1;
+int item_3 = collage_iterator * 3 - 2;
+
 // Units
 float vw = width / 100;
 float vh = height / 100;
 
 
+
+// Boilerplate
 void setup() {
+    // Basic Setup
     fullScreen();
     background(#FFFFFF);
+    pixelDensity(2);
 
+    // Object Init
     Sheet = new Paper();
 
     Item[] Items = {
@@ -100,6 +108,17 @@ void draw() {
     
 }
 
+// Global Functiona
+boolean overRect(float x, float y, float w, float h) {
+  // If the (x,y) are inside the rect, return 'true'
+  if (mouseX > x && mouseX < x+w &&
+      mouseY > y && mouseY < y+h) {
+    return true;
+  } else {
+    return false; 
+  }
+}
+
 // public <T> void clear_array(T[] array) {
 //     for (int i = 0; i < array.length; ++i) {
 //         array[i] = null;
@@ -107,5 +126,10 @@ void draw() {
 // }
 
 void mousePressed() {
-    
+    if (stage_iterator == 0) {
+        if(overRect(Items[item_1].pos_x, Items[item_1].pos_y, Items[item_1].it_width, Items[item_1].it_height)) {
+            Sheet.ChosenItems.add(Items[item_1]);
+            stage_iterator++;
+        }
+    }
 }
