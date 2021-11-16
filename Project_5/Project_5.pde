@@ -6,6 +6,7 @@
     ArrayList<Item> item_inv = new ArrayList<Item>(0);
     // Room[] RoomsS;
 
+    Table ChosenItems;
 
 // State Tracking
     int room_iterator = 0;
@@ -20,7 +21,7 @@
 // Units
     float vw;
     float vh;
-
+ 
 
 //DELETE
     String tag = "coin";
@@ -36,13 +37,19 @@ void setup() {
     // Basic Setup
     fullScreen();
     background(#FFFFFF);
-    // pixelDensity(2);
+    pixelDensity(2);
     vw = width / 100;
     vh = height / 100;
 
-    // Object Init
+    // Final Table Init
+    ChosenItems = new Table();
 
-    
+    ChosenItems.addColumn("tag");
+    ChosenItems.addColumn("file");
+    ChosenItems.addColumn("x");
+    ChosenItems.addColumn("y");
+
+    // Object Init
     Sheet = new Paper();
     Hoop = new Room(1, "1.svg");
     Test = new Item("crow", 100, 200, "crow.png");
@@ -169,14 +176,18 @@ void setup() {
 
 void draw() {
     //Rooms[room_iterator].room_driver();
-
     background(#FFFFFF);
+
+    // Test Objects
     // Hoop.render_back();
     // Sheet.render_paper();
     // Test.render_item();
-    for (int i = 0; i < item_inv.size(); ++i) {
-        item_inv.get(i).render_item();
-    }
+
+    item_inv.get(1).render_item(mouseX, mouseY);
+
+    // for (int i = 0; i < item_inv.size(); ++i) {
+    //     item_inv.get(i).render_item();
+    // }
     
     
 
@@ -185,7 +196,7 @@ void draw() {
     }
 }
 
-// Global Functiona
+// Global Functions
 boolean overRect(float x, float y, float w, float h) {
   // If the (x,y) are inside the rect, return 'true'
   if (mouseX > x && mouseX < x+w &&

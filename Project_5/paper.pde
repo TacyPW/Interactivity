@@ -35,8 +35,8 @@ public class Paper {
         rect(0, 0, width, height);
     }
 
-//     public void item_brush(Item[] brushtip) {
-//         brushtip[collage_iterator].render_item(mouseX, mouseY);
-//     }
+    public void item_brush(Item[] brushtip) {
+        item_inv.get(1).render_item(mouseX, mouseY);
+    }
 
 }
