@@ -4,9 +4,12 @@
     Room Hoop;
     Item Test;
     ArrayList<Item> item_inv = new ArrayList<Item>(0);
+    ArrayList<Room> room_s = new ArrayList<Room>(0);
+    ArrayList<Item> chosen_items = new ArrayList<Item>(0);
+
     // Room[] RoomsS;
 
-    Table ChosenItems;
+    // Table ChosenItems;
 
 // State Tracking
     int room_iterator = 0;
@@ -41,13 +44,13 @@ void setup() {
     vw = width / 100;
     vh = height / 100;
 
-    // Final Table Init
-    ChosenItems = new Table();
+    // // Final Table Init
+    // ChosenItems = new Table();
 
-    ChosenItems.addColumn("tag");
-    ChosenItems.addColumn("file");
-    ChosenItems.addColumn("x");
-    ChosenItems.addColumn("y");
+    // ChosenItems.addColumn("tag");
+    // ChosenItems.addColumn("file");
+    // ChosenItems.addColumn("x");
+    // ChosenItems.addColumn("y");
 
     // Object Init
     Sheet = new Paper();
@@ -98,80 +101,6 @@ void setup() {
     // item_inv.add(new Item("tag", x * vw, y * vh, "file"));
     // item_inv.add(new Item("tag", x * vw, y * vh, "file"));
     // item_inv.add(new Item("tag", x * vw, y * vh, "file"));
-
-    /*
-    Item[] Items = {
-        
-
-        // room 4
-        new Item(new Item("tag", x, y, "file")) ,S
-        new Item(new Item("tag", x, y, "file")) ,
-        new Item(new Item("tag", x, y, "file")) , // 3
-
-        // room 8
-        new Item(new Item("tag", x, y, "file")) ,
-        new Item(new Item("tag", x, y, "file")) ,
-        new Item(new Item("tag", x, y, "file")) , // 6
-
-        // room 9A
-        new Item(new Item("tag", x, y, "file")) ,
-        new Item(new Item("tag", x, y, "file")) ,
-        new Item(new Item("tag", x, y, "file")) , // 9      
-
-        // room 9B
-        new Item(new Item("tag", x, y, "file")) ,
-        new Item(new Item("tag", x, y, "file")) ,
-        new Item(new Item("tag", x, y, "file")) , // 12
-
-        // room 10A
-        new Item(new Item("tag", x, y, "file")) ,
-        new Item(new Item("tag", x, y, "file")) ,
-        new Item(new Item("tag", x, y, "file")) , // 15
-
-        // room 10B
-        new Item(new Item("tag", x, y, "file")) ,
-        new Item(new Item("tag", x, y, "file")) ,
-        new Item(new Item("tag", x, y, "file")) , // 18 
-
-        // room 10C
-        new Item(new Item("tag", x, y, "file")) ,
-        new Item(new Item("tag", x, y, "file")) ,
-        new Item(new Item("tag", x, y, "file")) , // 21
-
-        // room 10D
-        new Item(new Item("tag", x, y, "file")) ,
-        new Item(new Item("tag", x, y, "file")) ,
-        new Item(new Item("tag", x, y, "file")) , // 24
-
-        // room 11A
-        new Item(new Item("tag", x, y, "file")) ,
-        new Item(new Item("tag", x, y, "file")) ,
-        new Item(new Item("tag", x, y, "file")) , // 27
-
-        // room 11B
-        new Item(new Item("tag", x, y, "file")) ,
-        new Item(new Item("tag", x, y, "file")) ,
-        new Item(new Item("tag", x, y, "file")) , // 30
-    };
-    */
-
-
-    /*
-    Room[] Rooms = {
-        new Room(1, "1.svg") ,
-        new Room(2, "2.svg") ,
-        new Room(3, "3.svg") ,
-        new Room(4, "4.svg") ,
-        new Room(5, "5.svg") ,
-        new Room(6, "6.svg") ,
-        new Room(7, "7.svg") ,
-        new Room(8, "8.svg") ,
-        new Room(9, "9.svg") ,
-        new Room(10, "10.svg") ,
-        new Room(11, "11.svg") ,
-        new Room(12, "12.svg") 
-    };
-    */
 }
 
 void draw() {
@@ -180,10 +109,13 @@ void draw() {
 
     // Test Objects
     // Hoop.render_back();
-    // Sheet.render_paper();
+
+    Sheet.render_paper();
+    Sheet.item_brush(item_inv.get(2));
+
     // Test.render_item();
 
-    item_inv.get(1).render_item(mouseX, mouseY);
+    // item_inv.get(1).render_item(mouseX, mouseY);
 
     // for (int i = 0; i < item_inv.size(); ++i) {
     //     item_inv.get(i).render_item();

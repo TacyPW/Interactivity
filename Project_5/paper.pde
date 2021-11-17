@@ -35,8 +35,16 @@ public class Paper {
         rect(0, 0, width, height);
     }
 
-    public void item_brush(Item[] brushtip) {
+    public void item_brush(Item brushtip) {
+        x
+        y
+        
         item_inv.get(1).render_item(mouseX, mouseY);
+    }
+
+    public void item_chooser(int index) {
+        chosen_items.add(item_inv.get(index));
+        println("added" + index);
     }
 
 }
