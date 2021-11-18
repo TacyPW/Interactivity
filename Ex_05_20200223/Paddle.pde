@@ -1,26 +1,97 @@
 class Paddle {
+    
+    float x;  // X-coordinate of the paddle
+    float y;  // Y-coordinate of the paddle
+	float dim_s = 5;
+	float dim_l = 100;
+    float w = 20;  // Width of the paddle
+    float h = 100;  // Height of the paddle
 
-  int x;  // X-coordinate of the paddle
-  int y;  // Y-coordinate of the paddle
-  int w = 20;  // Width of the paddle
-  int h = 100;  // Height of the paddle
+    boolean direct = false; // false is horizontal true is vertical
+	boolean active = false; // highlight color toggle
 
-  Paddle() {
-    x = width - w*2;
-    y = height/2;
-  }
+	color highlight = #00FF00;
 
-  // Change paddle position with cursor
-  void update() {
-    y = mouseY - h/2;
-    y = constrain(y, 0, height-h);
-  }
-
-  // Draw paddle to the display window
-  void display() {
-    fill(255);
-    noStroke();
-    rect(x, y, w, h);
-  }
-  
+	char side;
+    
+    Paddle() {
+        x = width - w * 2;
+        y = height / 2;
+	}
+    
+    Paddle(char sidein) {
+		if (sidein == 'w') {
+			side = sidein;
+			direct = false;
+		}
+		else if (sidein == 'a') {
+			side = sidein;
+			direct = true;
+		}
+		else if (sidein == 's') {
+			side = sidein;
+			direct = false;
+		}
+		else {
+			side = 'd';
+			direct = true;
+		}
+		// movement direction
+		if (direct) {
+			w = dim_s;
+			h = dim_l;
+			x = width - dim_s * 2;
+        	y = height / 2 - dim_l / 2;
+		}
+		else {
+			w = dim_l;
+			h = dim_s;
+			x = width / 2 - dim_s / 2;
+        	y = height - dim_l * 2;
+		}
+	}
+    
+	
+    //Change paddle position with cursor
+    void update() {
+		// position
+		if (direct) { // vertical
+			if (side == 'a') { // left
+				x = dim_s;
+				y = mouseY - h / 2 - dim_l / 2;
+				y = constrain(y, 0, height - h);
+			}
+			else if (side == 'd') { // right
+				x = width - dim_s * 2;
+				y = mouseY - h / 2 - dim_l / 2;
+				y = constrain(y, 0, height - h);
+			}
+		}
+		else { // horizontal
+			if (side == 's') { // bottom
+				y = height - 2 * dim_s;
+				x = mouseX - w / 2;
+        		x = constrain(x, 0, width - w);
+			}
+			else if (side == 'w') { // top
+				y = dim_s;
+				x = mouseX - w / 2;
+        		x = constrain(x, 0, width - w);
+			}
+		}
+	}
+    
+    //Draw paddle to the display window
+    void display() {
+        // color
+		if (active) {
+			fill(highlight);
+		}
+		else {
+			fill(#000000);
+		}
+        noStroke();
+        rect(x, y, w, h);
+	}
+    
 }
