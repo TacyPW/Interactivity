@@ -36,8 +36,8 @@ public class Paper {
     }
 
     public void item_brush(Item brushtip) {
-        x
-        y
+        // x
+        // y
         
         item_inv.get(1).render_item(mouseX, mouseY);
     }

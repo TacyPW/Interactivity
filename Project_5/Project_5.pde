@@ -108,20 +108,20 @@ void draw() {
     background(#FFFFFF);
 
     // Test Objects
-    // Hoop.render_back();
+     Hoop.render_back();
 
-    Sheet.render_paper();
-    Sheet.item_brush(item_inv.get(2));
+    
 
     // Test.render_item();
 
-    // item_inv.get(1).render_item(mouseX, mouseY);
+     item_inv.get(1).render_item(mouseX, mouseY);
 
-    // for (int i = 0; i < item_inv.size(); ++i) {
-    //     item_inv.get(i).render_item();
-    // }
+     for (int i = 0; i < item_inv.size(); ++i) {
+         item_inv.get(i).render_item();
+     }
     
-    
+    Sheet.render_paper();
+    Sheet.item_brush(item_inv.get(2));
 
     if ((collage_iterator > 9) || (collage_iterator < 0)) {
         collage_iterator = 0;
