@@ -5,8 +5,8 @@ class Ball {
     float y;  // Y-coordinate of the ball
     float diameter = 20.0;  // Diameter of the ball
     float radius = diameter / 2;  // Radius of the ball
-    float speedX = random(3, 5);  // Speed along the x-axis
-    float speedY = random( - 2, 2);  // Speed along the y-axis
+    float speedX = random(3);  // Speed along the x-axis
+    float speedY = random(3);  // Speed along the y-axis
     
     Ball() {
         x = width / 2;
@@ -57,8 +57,8 @@ class Ball {
     //Change ball direction when paddle is hit
     //and bump it back to the edge of the paddle
     void hit(Paddle p) {
-		if (p.direct) {
-			speedX = speedX * - 1;
+		if (speedX >= 0) {
+			speedX = speedX * -1;
 			// Align the ball with the paddle
 			if (speedX < 0) {
 				x =  p.x - radius;
@@ -66,11 +66,20 @@ class Ball {
 				x = p.x + p.w + radius; 
 			}
 		}
-		else {
-			speedY = speedY * - 1;
+		else if (speedY <= 0) {
+			speedY = speedY * -1;
 			// Align the ball with the paddle
 			if (speedY < 0) {
-				y =  p.y - radius;
+				y = p.y - radius;
+			} else {
+				y = p.y + p.h + radius; 
+			}
+		}
+        else if (speedX < 0) {
+			speedY = speedY * -1;
+			// Align the ball with the paddle
+			if (speedY < 0) {
+				y = p.y - radius;
 			} else {
 				y = p.y + p.h + radius; 
 			}

@@ -12,10 +12,10 @@ void setup() {
     paddleS = new Paddle('s');
     paddleD = new Paddle('d');
     
-			paddleW.update();  // Update top paddle
-		paddleA.update();  // Update left paddle
-		paddleS.update();  // Update bottom paddle
-		paddleD.update();  // Update right paddle
+		// 	paddleW.update();  // Update top paddle
+		// paddleA.update();  // Update left paddle
+		// paddleS.update();  // Update bottom paddle
+		// paddleD.update();  // Update right paddle
 
     ball = new Ball();
     // noCursor();
@@ -23,7 +23,8 @@ void setup() {
 }
 
 void draw() {
-    background(255, 255, 255);
+    //background(255, 255, 255);
+	draw_sin();
 	
 	if (key == 'w') {
 		paddleW.active = true;
