@@ -1,9 +1,8 @@
 class Ball {
-    
     float x;  // X-coordinate of the ball
     float px; // Prior x-coordinate
     float y;  // Y-coordinate of the ball
-    float diameter = 20.0;  // Diameter of the ball
+    float diameter = 5;  // Diameter of the ball
     float radius = diameter / 2;  // Radius of the ball
     float speedX = random(3, 5);  // Speed along the x-axis
     float speedY = random( - 2, 2);  // Speed along the y-axis
@@ -11,7 +10,7 @@ class Ball {
     Ball() {
         x = width / 2;
         y = height / 2;
-}
+    }
     
     //Change ball position
     void update() {
@@ -45,14 +44,14 @@ class Ball {
         //     y = radius;
         //     speedY= speedY * - 1;
         // }
-}
+    }
     
     //Draw ball to the display window
     void display() {
         fill(0);
         noStroke();
         ellipse(x, y, diameter, diameter);
-}
+    }
     
     //Change ball direction when paddle is hit
     //and bump it back to the edge of the paddle
@@ -76,6 +75,7 @@ class Ball {
 			}
 		}
 
-}
+    }
     
 }
+

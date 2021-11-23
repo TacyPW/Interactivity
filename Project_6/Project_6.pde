@@ -3,7 +3,47 @@ Paddle paddleW;
 Paddle paddleA;
 Paddle paddleS;
 Paddle paddleD;
+
 boolean collision;
+boolean startscreen = false;
+
+Point oop = new Point(100, 100);
+Point hoop = new Point(110, 110);
+
+Line rope = new Line(oop, hoop);
+
+void sinLine(Line l) {
+	float tlength = lineLength(l.start, l.end);
+	float tangle = lineAngle(l);
+	float wax;
+	float way;
+
+	println(tlength, tangle);
+
+	push();
+		translate(l.start.x, l.start.y);
+		rotate(-1 * tangle);
+		
+		
+		noFill();
+		stroke(0, 255, 0);
+		strokeWeight(2);
+
+		beginShape();
+		vertex(0, 0);
+		curveVertex(0, 0);
+			for (int i = 0; i <= tlength ; i += 5) {
+				wax = i;
+				way = 5 * sin(i);
+				curveVertex(wax, way);
+				//println(wax, way);
+			}
+			curveVertex(tlength, 0);
+		curveVertex(tlength, 0);
+		vertex(tlength, 0);
+		endShape();
+	pop();
+}
 
 void setup() {
     size(600, 600);
@@ -11,11 +51,13 @@ void setup() {
     paddleA = new Paddle('a');
     paddleS = new Paddle('s');
     paddleD = new Paddle('d');
+
+	key = ' ';
     
-			paddleW.update();  // Update top paddle
-		paddleA.update();  // Update left paddle
-		paddleS.update();  // Update bottom paddle
-		paddleD.update();  // Update right paddle
+		// paddleW.update();  // Update top paddle
+		// paddleA.update();  // Update left paddle
+		// paddleS.update();  // Update bottom paddle
+		// paddleD.update();  // Update right paddle
 
     ball = new Ball();
     // noCursor();
@@ -24,7 +66,22 @@ void setup() {
 
 void draw() {
     background(255, 255, 255);
+
+	sinLine(rope);
+
+
+	beginShape();
+	vertex(rope.start.x, rope.start.y);
+	vertex(rope.end.x, rope.end.y);
+	endShape();
+
+
+	rope.end.y++;
+	rope.end.x++;
+	// draw_sin();
 	
+
+	/*
 	if (key == 'w') {
 		paddleW.active = true;
 		paddleA.active = false;
@@ -86,10 +143,13 @@ void draw() {
 	collision = hitPaddle(paddleD, ball);
 
     if (collision == true) {
-        
+        println("boop");
 	}
+	*/
 }
 
+
+// BUGGY - fix for horizontal paddles - probably something w lack of py member variable
 boolean hitPaddle(Paddle p, Ball b) {
     
     float circleDistanceX = abs(b.x - p.x - p.w / 2);
