@@ -4,7 +4,7 @@ class Paddle {
     float y;  // Y-coordinate of the paddle
 	float dim_s = 5;
 	float dim_l = 100;
-    float w = 20;  // Width of the paddle
+    float w = 5;  // Width of the paddle
     float h = 100;  // Height of the paddle
 
     boolean direct = false; // false is horizontal true is vertical

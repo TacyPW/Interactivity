@@ -17,7 +17,14 @@ class Line {
         end = ein;
     }
 
-    void draw_line() {
+    Line(Line lin) {
+        this.start.x = lin.start.x;
+        this.start.y = lin.start.y;
+        this.end.x = lin.end.x;
+        this.end.y = lin.end.y;
+    }
+
+    void render() {
         line(start.x, start.y, end.x, end.y);
     }
 }
@@ -102,8 +109,79 @@ float lineAngle(Line l) {
 	return alpha;
 }
 
+void sinLine(Point a, Point b) {
+    Line l = new Line(a,b);
+	float tlength = lineLength(l);
+	float tangle = lineAngle(l);
+	float wax;
+	float way;
 
+	// println(tlength, tangle);
 
+	push();
+		translate(l.start.x, l.start.y);
+        
+        if (ball.speedX >= 0) {
+            rotate(-1 * tangle);
+        }
+        else {
+            rotate(-1 * tangle + TAU);
+        }
+		
+		noFill();
+		stroke(0, 255, 0);
+		strokeWeight(2);
+
+		beginShape();
+            vertex(0, 0);
+            curveVertex(0, 0);
+            
+                for (int i = 0; i <= tlength ; i += 5) {
+                    wax = i;
+                    way = 5 * sin(i);
+                    curveVertex(wax, way);
+                    //println(wax, way);
+                }
+
+            curveVertex(tlength, 0);
+            vertex(tlength, 0);
+		endShape();
+	pop();
+}
+
+void sinLine(Line l) {
+	float tlength = lineLength(l.start, l.end);
+	float tangle = lineAngle(l);
+	float wax;
+	float way;
+
+	// println(tlength, tangle);
+
+	push();
+		translate(l.start.x, l.start.y);
+        if (ball.speedX >= 0) {
+            rotate(-1 * tangle);
+        }
+        else {
+            rotate(1 * tangle + PI);
+        }
+		// rotate(-1 * tangle);
+
+		beginShape();
+		vertex(0, 0);
+		curveVertex(0, 0);
+			for (int i = 0; i <= tlength ; i += 5) {
+				wax = i;
+				way = 5 * sin(i);
+				curveVertex(wax, way);
+				//println(wax, way);
+			}
+			curveVertex(tlength, 0);
+		curveVertex(tlength, 0);
+		vertex(tlength, 0);
+		endShape();
+	pop();
+}
 
 float sinx = 0;
 float siny = height / 2;
@@ -118,4 +196,3 @@ void draw_sin(Point start, Point end) {
     sinx++;
     siny = siny + 5* sin(sinx);
 }
-
