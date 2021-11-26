@@ -30,14 +30,14 @@ boolean startscreen = true;
 Point last_collision = new Point(0,0);
 Point current_pos = new Point(0,0);
 
-
-
 ArrayList<Line> trail;
-ArrayList<Point> bubbles;
+ArrayList<Bubble> bubbles;
 
 Point origin = new Point(0,0);
 Point center = new Point(width / 2, height / 2);
 Line bruh;
+
+Bubble popp = new Bubble(center.x, center.y, 'w');
 
 void setup() {
 	fullScreen();
@@ -65,6 +65,7 @@ void setup() {
 
 void draw() {
     background(255, 255, 255);
+	popp.render();
 
 	push();
 		stroke(0);
@@ -74,6 +75,19 @@ void draw() {
 			sinLine(trail.get(i));
 		}
 	pop();
+
+	/* push();
+		stroke(0);
+		noFill();
+		if (bubbles.size() >= 2) {
+			for (int i = 0; i < bubbles.size() - 1; ++i) {
+				// println(i, ": ", trail.get(i).start.x, trail.get(i).start.y, trail.get(i).end.x, trail.get(i).end.y);
+				bubbles.get(i).render();
+			}
+		}
+	pop(); */
+	
+	
 
 	if (key == 'w') {
 		paddleW.active = true;
@@ -196,8 +210,7 @@ boolean hitPaddle(Paddle p, Ball b) {
 
 
 void keyPressed() {
-	//bubbles.add(new Point(ball.x, ball.y));
-	//pr
+	bubbles.add(new Bubble(ball.x, ball.y, key));
 }
 
 // boolean hitPaddle(Paddle p, Ball b) {
