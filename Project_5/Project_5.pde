@@ -1,15 +1,10 @@
 // Initialization
-    // Item[] Items;
     Paper Sheet;
     Room Hoop;
     Item Test;
     ArrayList<Item> item_inv = new ArrayList<Item>(0);
-    ArrayList<Room> room_s = new ArrayList<Room>(0);
-    ArrayList<Item> chosen_items = new ArrayList<Item>(0);
-
-    // Room[] RoomsS;
-
-    // Table ChosenItems;
+    ArrayList<Room> rooms = new ArrayList<Room>(0);
+    ArrayList<Item> ChosenItems = new ArrayList<Item>(0);
 
 // State Tracking
     int room_iterator = 0;
@@ -33,9 +28,6 @@
     String file = "coin.png";
 //DELETE
 
-
-
-// Boilerplate
 void setup() {
     // Basic Setup
     fullScreen();
@@ -54,13 +46,14 @@ void setup() {
 
     // Object Init
     Sheet = new Paper();
-    Hoop = new Room(1, "1.svg");
+    //Hoop = new Room(1, "1.svg");
     Test = new Item("crow", 100, 200, "crow.png");
 
     // Room 1
     item_inv.add(new Item("stamp", 80 * vw, 20 * vh, "stamp.png"));
     item_inv.add(new Item("crow", 20 * vw, 20 * vh, "crow.png"));
     item_inv.add(new Item("flower", 70 * vw, 80 * vh, "flower.png"));
+    rooms.add(new Room(1, "1.svg", item_inv.get(0), item_inv.get(1), item_inv.get(2)));
 
     // Room 2
     item_inv.add(new Item("fingerpick", 25 * vw, 30 * vh, "fingerpick.png"));
@@ -107,25 +100,22 @@ void draw() {
     //Rooms[room_iterator].room_driver();
     background(#FFFFFF);
 
-    // Test Objects
-     Hoop.render_back();
+    rooms.get(room_iterator).room_driver();
 
-    
 
-    // Test.render_item();
+    // // Test Objects
+    //  Hoop.render_back();
+    // // Test.render_item();
+    // item_inv.get(1).render_item(mouseX, mouseY);
+    // for (int i = 0; i < item_inv.size(); ++i) {
+    //     item_inv.get(i).render_item();
+    // }
+    // Sheet.render_paper();
+    // Sheet.item_brush(item_inv.get(2));
 
-     item_inv.get(1).render_item(mouseX, mouseY);
-
-     for (int i = 0; i < item_inv.size(); ++i) {
-         item_inv.get(i).render_item();
-     }
-    
-    Sheet.render_paper();
-    Sheet.item_brush(item_inv.get(2));
-
-    if ((collage_iterator > 9) || (collage_iterator < 0)) {
-        collage_iterator = 0;
-    }
+    // if ((collage_iterator > 9) || (collage_iterator < 0)) {
+    //     collage_iterator = 0;
+    // }
 }
 
 // Global Functions
@@ -140,6 +130,8 @@ boolean overRect(float x, float y, float w, float h) {
   }
 }
 
+
+
 // public <T> void clear_array(T[] array) {
 //     for (int i = 0; i < array.length; ++i) {
 //         array[i] = null;
@@ -147,20 +139,20 @@ boolean overRect(float x, float y, float w, float h) {
 // }
 
 void mousePressed() {
-    // if (s"tag"e_iterator == 0) {
-    //     if(overRect(Items[item_1].pos_x, Items[item_1].pos_y, Items[item_1].it_width, Items[item_1].it_height)) {
-    //         Sheet.ChosenItems[collage_iterator] = Items[item_1];
-    //         s"tag"e_iterator++;
-    //     }
-    //     if(overRect(Items[item_1].pos_x, Items[item_1].pos_y, Items[item_1].it_width, Items[item_1].it_height)) {
-    //         Sheet.ChosenItems[collage_iterator] = Items[item_1];
-    //         s"tag"e_iterator++;
-    //     }
-    //     if(overRect(Items[item_1].pos_x, Items[item_1].pos_y, Items[item_1].it_width, Items[item_1].it_height)) {
-    //         Sheet.ChosenItems[collage_iterator] = Items[item_1];
-    //         s"tag"e_iterator++;
-    //     }
-    // }
+    if (stage_iterator == 0) {
+        if(overRect(rooms.get(room_iterator).i1.pos_x, rooms.get(room_iterator).i1.pos_y, rooms.get(room_iterator).i1.it_width, rooms.get(room_iterator).i1.it_height)) {
+            ChosenItems.add(rooms.get(room_iterator).i1);
+            stage_iterator++;
+        }
+        if(overRect(rooms.get(room_iterator).i2.pos_x, rooms.get(room_iterator).i2.pos_y, rooms.get(room_iterator).i2.it_width, rooms.get(room_iterator).i2.it_height)) {
+            ChosenItems.add(rooms.get(room_iterator).i2);
+            stage_iterator++;
+        }
+        if(overRect(rooms.get(room_iterator).i3.pos_x, rooms.get(room_iterator).i3.pos_y, rooms.get(room_iterator).i3.it_width, rooms.get(room_iterator).i3.it_height)) {
+            ChosenItems.add(rooms.get(room_iterator).i3);
+            stage_iterator++;
+        }
+    }
     // if (s"tag"e_iterator == 0) {
     //     if(overRect(Items[item_1].pos_x, Items[item_1].pos_y, Items[item_1].it_width, Items[item_1].it_height)) {
     //         Sheet.ChosenItems[collage_iterator] = Items[item_1];

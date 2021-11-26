@@ -1,5 +1,3 @@
-// 
-// ;
 public class Paper {
     // background
     PShape bak = loadShape("paper.svg");
@@ -12,9 +10,6 @@ public class Paper {
 
     // desc
     String description;
-
-//     // Collage Items
-//     Item[] ChosenItems = new Item[10];
 
     // Constructors
     public Paper() {
@@ -43,7 +38,7 @@ public class Paper {
     }
 
     public void item_chooser(int index) {
-        chosen_items.add(item_inv.get(index));
+        ChosenItems.add(item_inv.get(index));
         println("added" + index);
     }
 

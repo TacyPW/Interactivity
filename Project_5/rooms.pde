@@ -6,10 +6,22 @@ class Room {
     PShape back_img;
     color walls = #FFFFFF;
     color lines = #000000;
+    Item i1;
+    Item i2;
+    Item i3;
+    Item ifinal;
 
-    Room(int idx, String file) {
+    Room (int idx, String file) {
         index = idx;
         back_img = loadShape(file);
+    }
+
+    Room (int idx, String file, Item i1in, Item i2in, Item i3in) {
+        index = idx;
+        back_img = loadShape(file);
+        i1 = i1in;
+        i2 = i2in;
+        i3 = i3in;
     }
     
     void render_back() {
@@ -20,30 +32,37 @@ class Room {
     }
 
     
-//     void render_items() {
-
-//         blendMode(MULTIPLY);
-//         Items[item_1].render_item();
-//         Items[item_2].render_item();
-//         Items[item_3].render_item();
-//         blendMode(BLEND);
-//     }
+     void render_items() {
+        blendMode(MULTIPLY);
+        i1.render_item();
+        i2.render_item();
+        i3.render_item();
+        blendMode(BLEND);
+    }
     
+    public void item_chooser(int index) {
+        ChosenItems.add(item_inv.get(index));
+        println("added" + index);
+    }
 
-//     void room_driver() {
-//         if (stage_iterator <= 0) {
-//             this.render_back();
-//             this.render_items();
-//         }
-//         else if (stage_iterator == 1) {
-//             this.render_back();
-//             Sheet.render_transparency();
-//             Sheet.render_paper();
-//             Sheet.item_brush(Sheet.ChosenItems[]);
+    void room_driver() {
+        this.render_back();
+        if (stage_iterator <= 0) {
+            this.render_items();
+
+
+        }
+        /*else if (stage_iterator == 1) {
+            this.render_back();
+            Sheet.render_transparency();
+            Sheet.render_paper();
+            Sheet.item_brush(Sheet.ChosenItems[]);
             
-//         }
-//         else if (stage_iterator == 2) {
+        }
+        else if (stage_iterator == 2) {
             
-//         }
-//     }
+        }
+        */
+    } 
+        
 }
