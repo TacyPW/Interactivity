@@ -56,10 +56,17 @@ class Room {
             this.render_back();
             Sheet.render_transparency();
             Sheet.render_paper();
-            
-            Sheet.item_brush(ChosenItems.get(room_iterator));
+            if (overRect(Sheet.x1, Sheet.y1, Sheet.x2 , Sheet.y2 )) {
+                Sheet.item_brush(ChosenItems.get(room_iterator));
+            }
+            else {
+                blendMode(MULTIPLY);
+                image(close, mouseX - 20, mouseY - 20, 40, 40);
+                blendMode(BLEND);
+            }
             
         }
+        
         /*
         else if (stage_iterator == 2) {
             

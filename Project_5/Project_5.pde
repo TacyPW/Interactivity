@@ -5,6 +5,7 @@
     ArrayList<Item> item_inv = new ArrayList<Item>(0);
     ArrayList<Room> rooms = new ArrayList<Room>(0);
     ArrayList<Item> ChosenItems = new ArrayList<Item>(0);
+    PImage close;
 
 // State Tracking
     int room_iterator = 0;
@@ -36,6 +37,7 @@ void setup() {
     vw = width / 100;
     vh = height / 100;
 
+    close = loadImage("close.png");
     // // Final Table Init
     // ChosenItems = new Table();
 
@@ -157,6 +159,9 @@ void mousePressed() {
         if (overRect(Sheet.x1, Sheet.y1, Sheet.x2 - Sheet.x1, Sheet.y2 - Sheet.y1)) {
             ChosenItems.get(room_iterator).set_final(mouseX, mouseY);
             stage_iterator++;
+        }
+        else {
+            
         }
     }
 
