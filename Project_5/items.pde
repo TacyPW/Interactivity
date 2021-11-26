@@ -9,8 +9,8 @@
     float pos_x;
     float pos_y;
 
-    float render_x = pos_x;
-    float render_y = pos_y;
+    float render_x;
+    float render_y;
     
     float it_width = 200;
     float it_height = 200;
@@ -38,10 +38,17 @@
         blendMode(BLEND);
     }
 
-//     void final_render() {
-//         image(this.item_img, render_x, render_y, it_width, it_height);
-//     }
+    void final_render() {
+        blendMode(MULTIPLY);
+        image(this.item_img, render_x, render_y, it_width, it_height);
+        blendMode(BLEND);
+    }
 
+    void set_final(float xin, float yin) {
+        render_x = xin;
+        render_y = yin;
+        println("set");
+    }
  }
 
 

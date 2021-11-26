@@ -153,10 +153,17 @@ void mousePressed() {
             stage_iterator++;
         }
     }
-    // if (s"tag"e_iterator == 0) {
+    else if (stage_iterator == 1) {
+        if (overRect(Sheet.x1, Sheet.y1, Sheet.x2 - Sheet.x1, Sheet.y2 - Sheet.y1)) {
+            ChosenItems.get(room_iterator).set_final(mouseX, mouseY);
+            stage_iterator++;
+        }
+    }
+
+    // if (stage_iterator == 0) {
     //     if(overRect(Items[item_1].pos_x, Items[item_1].pos_y, Items[item_1].it_width, Items[item_1].it_height)) {
     //         Sheet.ChosenItems[collage_iterator] = Items[item_1];
-    //         s"tag"e_iterator++;
+    //         stage_iterator++;
     //     }
     // }
 }

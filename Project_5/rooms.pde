@@ -52,13 +52,15 @@ class Room {
 
 
         }
-        /*else if (stage_iterator == 1) {
+        else if (stage_iterator == 1) {
             this.render_back();
             Sheet.render_transparency();
             Sheet.render_paper();
-            Sheet.item_brush(Sheet.ChosenItems[]);
+            
+            Sheet.item_brush(ChosenItems.get(room_iterator));
             
         }
+        /*
         else if (stage_iterator == 2) {
             
         }

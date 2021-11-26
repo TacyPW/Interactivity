@@ -26,15 +26,12 @@ public class Paper {
     }
 
     public void render_transparency() {
-        fill(0, 255, 0, 50);
+        fill(255, 100);
         rect(0, 0, width, height);
     }
 
     public void item_brush(Item brushtip) {
-        // x
-        // y
-        
-        item_inv.get(1).render_item(mouseX, mouseY);
+        brushtip.render_item(mouseX, mouseY);
     }
 
     public void item_chooser(int index) {
