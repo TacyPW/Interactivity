@@ -161,7 +161,8 @@ void mousePressed() {
             stage_iterator++;
         }
         else {
-            
+            ChosenItems.remove(room_iterator);
+            --stage_iterator;
         }
     }
 
