@@ -20,6 +20,13 @@ public class Paper {
     public void render_paper() {
         render_transparency();
         shape(bak, x1, y1, x2, y2);
+        for (Item chosen : ChosenItems) {
+            if (chosen.final_set) {
+                chosen.final_render();
+            }
+        }   
+        
+        
         // for (int i = 0; i < collage_iterator; ++i) {
         //     ChosenItems[i].final_render();
         // }

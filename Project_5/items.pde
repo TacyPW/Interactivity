@@ -15,6 +15,8 @@
     float it_width = 200;
     float it_height = 200;
 
+    boolean final_set = false;
+
     public Item(String tg, float x, float y, String file) {
         tag = tg;
         pos_x = x;
@@ -45,8 +47,11 @@
     }
 
     void set_final(float xin, float yin) {
-        render_x = xin;
-        render_y = yin;
+        float itX = xin  - (it_width / 2);
+        float itY = yin - (it_height / 2);
+        render_x = itX;
+        render_y = itY;
+        this.final_set = true;
         println("set");
     }
  }
