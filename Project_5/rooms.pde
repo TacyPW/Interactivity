@@ -11,6 +11,8 @@ class Room {
     Item i3;
     Item ifinal;
 
+    Room() {}
+
     Room (int idx, String file) {
         index = idx;
         back_img = loadShape(file);

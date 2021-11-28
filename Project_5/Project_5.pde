@@ -8,6 +8,7 @@
     PImage close;
     PImage left;
     PImage right;
+    
 
 // State Tracking
     int room_iterator = 0;
@@ -111,7 +112,7 @@ void draw() {
     //Rooms[room_iterator].room_driver();
     background(#FFFFFF);
 
-    rooms.get(room_iterator).room_driver();
+    
 
 
     // RunText(teckst, 10*vw, 80*vw, width - 10*vw, height - 10*vw, Incrementor hell = new Incrementor() );
@@ -120,7 +121,7 @@ void draw() {
         // run intro screen
     }
     else if (room_iterator >= 0 && room_iterator < 9) {
-        
+        rooms.get(room_iterator).room_driver();
     }
     else {
         // run tunnel function
