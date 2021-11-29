@@ -4,7 +4,6 @@ public class Bubble {
     float radius = 0;
     color tcolor;
 
-
     color red = #FF0000;
     color green = #00FF00;
     color blue = #0000FF;
@@ -12,16 +11,16 @@ public class Bubble {
     color magenta = #FF00FF;
     color yellow = #FFE800;
     color key = #000000;
-
+    color white = #FFFFFF;
 
     public Bubble (float xin, float yin, float cin) {
         x = xin;
         y = yin;
         if (cin == 'w') {
-            tcolor = cyan;
+            tcolor = green;
         }
         else if (cin == 'a') {
-            tcolor = magenta;
+            tcolor = red;
         }
         else if (cin == 's') {
             tcolor = blue;

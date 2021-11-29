@@ -129,7 +129,7 @@ void sinLine(Point a, Point b) {
         }
 		
 		noFill();
-		stroke(0, 255, 0);
+		stroke(255, 0, 255);
 		strokeWeight(2);
 
 		beginShape();
@@ -166,6 +166,10 @@ void sinLine(Line l) {
             rotate(1 * tangle + PI);
         }
 		// rotate(-1 * tangle);
+
+		noFill();
+		stroke(255, 0, 255);
+		strokeWeight(2);
 
 		beginShape();
 		vertex(0, 0);

@@ -5,7 +5,10 @@ offers the user a varied experience throughout scapes of confusion,
 nonsense and surreality. 
 
 The end goal of the game is to create a visually interesting composition, 
-by staying alive long enough to construct layers of mutable 
+by staying alive long enough to construct layers of mutable, 
+every evolving chaos. 
+
+--Tacy Prins Woodlief
 */
 
 Ball ball;
@@ -19,9 +22,12 @@ boolean collisionW = false;
 boolean collisionA = false;
 boolean collisionS = false;
 boolean collisionD = false;
+
 boolean collide = true;
 
 boolean startscreen = true;
+PImage startimg;
+
 
 // Point oop = new Point(100, 100);
 // Point hoop = new Point(110, 110);
@@ -37,22 +43,32 @@ Point origin = new Point(0,0);
 Point center = new Point(width / 2, height / 2);
 Line bruh;
 
-Bubble popp = new Bubble(center.x, center.y, 'w');
+//PShape startimg = loadShape("introscreen.svg");
 
 void setup() {
 	fullScreen();
+
+	startimg = loadImage("startimg.jpg");
     // size(600, 600);
     paddleW = new Paddle('w');
+	paddleW.set_h(paddleW.green);
     paddleA = new Paddle('a');
-    paddleS = new Paddle('s');
+	paddleA.set_h(paddleA.red);
+    paddleS = new Paddle('s');	
+	paddleS.set_h(paddleS.blue);
     paddleD = new Paddle('d');
+	paddleD.set_h(paddleD.yellow);
+	
 
-	key = ' ';
+	paddleW.active = true;  // Update top paddle
+	paddleA.active = true;  // Update left paddle
+	paddleS.active = true;  // Update bottom paddle
+	paddleD.active = true; 
     
-		// paddleW.update();  // Update top paddle
-		// paddleA.update();  // Update left paddle
-		// paddleS.update();  // Update bottom paddle
-		// paddleD.update();  // Update right paddle
+	paddleW.update();  // Update top paddle
+	paddleA.update();  // Update left paddle
+	paddleS.update();  // Update bottom paddle
+	paddleD.update();  // Update right paddle
 
     ball = new Ball();
     // noCursor();
@@ -60,12 +76,14 @@ void setup() {
 
 	trail = new ArrayList<Line>();
 	trail.add(new Line(origin, origin));
+
+	bubbles = new ArrayList<Bubble>();
+	bubbles.add(new Bubble(0, 0, paddleA.cyan));
 	// bubbles.add(new Point(center.x, center.y));
 }
 
 void draw() {
     background(255, 255, 255);
-	popp.render();
 
 	push();
 		stroke(0);
@@ -75,6 +93,15 @@ void draw() {
 			sinLine(trail.get(i));
 		}
 	pop();
+	
+	
+	push();
+		for (int i = 2; i < bubbles.size(); ++i) {
+			// println(i, ": ", trail.get(i).start.x, trail.get(i).start.y, trail.get(i).end.x, trail.get(i).end.y);
+			bubbles.get(i).render();
+		}
+	pop();
+	
 
 	/* push();
 		stroke(0);
@@ -86,55 +113,12 @@ void draw() {
 			}
 		}
 	pop(); */
-	
-	
 
-	if (key == 'w') {
-		paddleW.active = true;
-		paddleA.active = false;
-		paddleS.active = false;
-		paddleD.active = false;
-		paddleW.update();  // Update top paddle
-	}
-	else if (key == 'a') {
-		paddleA.active = true;
-		paddleW.active = false;
-		paddleS.active = false;
-		paddleD.active = false;
-		paddleA.update();  // Update left paddle
-	}
-	else if (key == 's') {
-		paddleS.active = true;
-		paddleW.active = false;
-		paddleA.active = false;
-		paddleD.active = false;
-		paddleS.update();  // Update bottom paddle
-	}
-	else if (key == 'd') {
-		paddleD.active = true;
-		paddleW.active = false;
-		paddleA.active = false;
-		paddleS.active = false;
-		paddleD.update();  // Update right paddle
-	}
-	else if (key == ' ') {
-		paddleW.active = true;
-		paddleA.active = true;
-		paddleS.active = true;
-		paddleD.active = true;
-		paddleW.update();  // Update top paddle
-		paddleA.update();  // Update left paddle
-		paddleS.update();  // Update bottom paddle
-		paddleD.update();  // Update right paddle
-	}
-	else {
-		paddleD.active = true;
-		paddleW.active = false;
-		paddleA.active = false;
-		paddleS.active = false;
-		paddleD.update();  // Update right paddle
-	}
-    
+	paddleW.update();  // Update top paddle
+	paddleA.update();  // Update left paddle
+	paddleS.update();  // Update bottom paddle
+	paddleD.update();  // Update right paddle
+
     paddleW.display();  // Draw top paddle    
     paddleA.display();  // Draw left paddle    
     paddleS.display();  // Draw bottom paddle    
@@ -170,6 +154,10 @@ void draw() {
 	else if (collisionD) {
 		collide = true;
 		println("boop d");
+	}
+
+	if (startscreen) {
+		image(startimg, 0, 0, width, height);
 	}
 }
 
@@ -211,6 +199,52 @@ boolean hitPaddle(Paddle p, Ball b) {
 
 void keyPressed() {
 	bubbles.add(new Bubble(ball.x, ball.y, key));
+	if (startscreen) {
+		startscreen = false;
+	}
+	if (key == 'w') {
+		paddleW.active = true;
+		paddleA.active = false;
+		paddleS.active = false;
+		paddleD.active = false;
+	}
+	else if (key == 'a') {
+		paddleA.active = true;
+		paddleW.active = false;
+		paddleS.active = false;
+		paddleD.active = false;
+	}
+	else if (key == 's') {
+		paddleS.active = true;
+		paddleW.active = false;
+		paddleA.active = false;
+		paddleD.active = false;
+	}
+	else if (key == 'd') {
+		paddleD.active = true;
+		paddleW.active = false;
+		paddleA.active = false;
+		paddleS.active = false;
+
+	}
+	else if (key == ' ') {
+		paddleW.active = true;
+		paddleA.active = true;
+		paddleS.active = true;
+		paddleD.active = true;
+
+	}
+	// else {
+	// 	paddleD.active = true;
+	// 	paddleW.active = false;
+	// 	paddleA.active = false;
+	// 	paddleS.active = false;
+	// }
+
+	// if (key == 'w' || key == 'a' || key == 's' || key == 'd') {
+	// 	bubbles.add(new Bubble(ball.x, ball.y, key));
+	// }
+
 }
 
 // boolean hitPaddle(Paddle p, Ball b) {

@@ -7,7 +7,17 @@ class Paddle {
     float w = 5;  // Width of the paddle
     float h = 100;  // Height of the paddle
 
+	color red = #FF0000;
+    color green = #00FF00;
+    color blue = #0000FF;
+    color cyan = #00FFFF;
+    color magenta = #FF00FF;
+    color yellow = #FFE800;
+    color key = #000000;
+    color white = #FFFFFF;
+
     boolean direct = false; // false is horizontal true is vertical
+	
 	boolean active = false; // highlight color toggle
 
 	color highlight = #00FF00;
@@ -55,28 +65,30 @@ class Paddle {
     //Change paddle position with cursor
     void update() {
 		// position
-		if (direct) { // vertical
-			if (side == 'a') { // left
-				x = dim_s;
-				y = mouseY - h / 2 - dim_l / 2;
-				y = constrain(y, 0, height - h);
+		if (this.active) {
+			if (direct) { // vertical
+				if (side == 'a') { // left
+					x = dim_s;
+					y = mouseY - h / 2 - dim_l / 2;
+					y = constrain(y, 0, height - h);
+				}
+				else if (side == 'd') { // right
+					x = width - dim_s * 2;
+					y = mouseY - h / 2 - dim_l / 2;
+					y = constrain(y, 0, height - h);
+				}
 			}
-			else if (side == 'd') { // right
-				x = width - dim_s * 2;
-				y = mouseY - h / 2 - dim_l / 2;
-				y = constrain(y, 0, height - h);
-			}
-		}
-		else { // horizontal
-			if (side == 's') { // bottom
-				y = height - 2 * dim_s;
-				x = mouseX - w / 2;
-        		x = constrain(x, 0, width - w);
-			}
-			else if (side == 'w') { // top
-				y = dim_s;
-				x = mouseX - w / 2;
-        		x = constrain(x, 0, width - w);
+			else { // horizontal
+				if (side == 's') { // bottom
+					y = height - 2 * dim_s;
+					x = mouseX - w / 2;
+					x = constrain(x, 0, width - w);
+				}
+				else if (side == 'w') { // top
+					y = dim_s;
+					x = mouseX - w / 2;
+					x = constrain(x, 0, width - w);
+				}
 			}
 		}
 	}
@@ -92,6 +104,10 @@ class Paddle {
 		}
         noStroke();
         rect(x, y, w, h);
+	}
+
+	void set_h(color cin) {
+		this.highlight = cin;
 	}
     
 }
