@@ -1,1 +1,16 @@
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 432 288"><defs><style>.cls-1{fill:#e6e7e8;}.cls-2{fill:none;stroke:#231f20;stroke-miterlimit:10;}.cls-3{fill:#414042;}</style></defs><polygon class="cls-1" points="0 288 0 244.17 155.55 244.17 211.85 150.1 220.15 150.1 276.45 244.17 432 244.17 432 288 0 288"/><polyline class="cls-2" points="0 244.17 155.55 244.17 155.55 81.1 276.45 81.1 276.45 244.17 432 244.17"/><rect class="cls-2" x="211.85" y="137.9" width="8.3" height="12.2"/><line class="cls-2" x1="155.55" y1="244.17" x2="211.85" y2="150.1"/><line class="cls-2" x1="211.85" y1="137.9" x2="155.55" y2="81.1"/><line class="cls-2" x1="276.45" y1="81.1" x2="220.15" y2="137.9"/><line class="cls-2" x1="276.45" y1="244.17" x2="220.15" y2="150.1"/><path class="cls-3" d="M216,145.57h0a1.58,1.58,0,0,1,1.58,1.58v2.71a.24.24,0,0,1-.24.24h-2.68a.24.24,0,0,1-.24-.24v-2.71a1.58,1.58,0,0,1,1.58-1.58Z"/><ellipse class="cls-3" cx="215.98" cy="144.23" rx="0.83" ry="0.99"/></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.4.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 432 288" style="enable-background:new 0 0 432 288;" xml:space="preserve">
+<polygon style="fill:#E6E7E8;" points="0,288 0,244.2 155.6,244.2 211.9,150.1 220.1,150.1 276.5,244.2 432,244.2 432,288 "/>
+<polyline style="fill:none;stroke:#000000;stroke-miterlimit:10;" points="0,244.2 155.6,244.2 155.6,81.1 276.5,81.1 276.5,244.2 
+	432,244.2 "/>
+<rect x="211.9" y="137.9" style="fill:none;stroke:#000000;stroke-miterlimit:10;" width="8.3" height="12.2"/>
+<line style="fill:none;stroke:#000000;stroke-miterlimit:10;" x1="155.6" y1="244.2" x2="211.9" y2="150.1"/>
+<line style="fill:none;stroke:#000000;stroke-miterlimit:10;" x1="211.9" y1="137.9" x2="155.6" y2="81.1"/>
+<line style="fill:none;stroke:#000000;stroke-miterlimit:10;" x1="276.5" y1="81.1" x2="220.1" y2="137.9"/>
+<line style="fill:none;stroke:#000000;stroke-miterlimit:10;" x1="276.5" y1="244.2" x2="220.1" y2="150.1"/>
+<path style="fill:#414042;" d="M216,145.6L216,145.6c0.9,0,1.6,0.7,1.6,1.6l0,0v2.7c0,0.1-0.1,0.2-0.2,0.2c0,0,0,0,0,0h-2.7
+	c-0.1,0-0.2-0.1-0.2-0.2c0,0,0,0,0,0v-2.7C214.4,146.3,215.1,145.6,216,145.6L216,145.6z"/>
+<ellipse style="fill:#414042;" cx="216" cy="144.2" rx="0.8" ry="1"/>
+</svg>
