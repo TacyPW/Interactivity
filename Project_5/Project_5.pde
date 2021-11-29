@@ -157,7 +157,10 @@ boolean overRect(float x, float y, float w, float h) {
 
 // Event Functions
 void mousePressed() {
-    if (room_iterator <= 9) {
+    if (room_iterator < 0) { // startscreen
+        
+    }
+    else if (room_iterator <= 9) { // body
         if (stage_iterator == 0) {
             if(overRect(rooms.get(room_iterator).i1.pos_x, rooms.get(room_iterator).i1.pos_y, rooms.get(room_iterator).i1.it_width, rooms.get(room_iterator).i1.it_height)) {
                 ChosenItems.add(rooms.get(room_iterator).i1);
@@ -195,6 +198,9 @@ void mousePressed() {
                 stage_iterator = 0;
             }
         }
+    }
+    else { // Base Case = endscreen
+        
     }
 
 
