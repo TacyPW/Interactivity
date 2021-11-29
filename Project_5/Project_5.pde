@@ -78,7 +78,7 @@ void setup() {
     item_inv.add(new Item("clover", 10 * vw, vh * 60, "clover.png"));
     item_inv.add(new Item("gascan", 75 * vw, 30 * vh, "gascan.png"));
     item_inv.add(new Item("coin", 55 * vw, 15 * vh, "coin.png"));
-    rooms.add(new Room(5, "5.svg", item_inv.get(9), item_inv.get(10), item_inv.get(11)));
+    rooms.add(new Room(5, "4.svg", item_inv.get(9), item_inv.get(10), item_inv.get(11)));
 
     // Room 5
     item_inv.add(new Item("cheese", 55 * vw, 40 * vh, "cheese.png"));
