@@ -19,6 +19,18 @@ public class Message {
         }
     }
 
+    void print(float x, float y, float w, float h, float size) {
+        push();
+            textFont(inconsolata, 20);
+            textSize(size);
+            fill(0);
+            text(workingc, x, y, w, h);
+        pop();
+        if (workingc.length() < content.length()) {
+            this.update();
+        }
+    }
+
     void update() {
         wlen++;
         workingc = workingc + str(content.charAt(wlen));

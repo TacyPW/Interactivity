@@ -123,12 +123,7 @@ void draw() {
             image(intro, 0, 0, width, height);
             hellaa = false;
         }
-        push();
-            fill(0);
-            textFont(inconsolata);
-            textSize(20); 
-            Messages.get(0).print(7 * vw, 90 * vh, 40);
-        pop();
+        Messages.get(0).print(7 * vw, 90 * vh, 40);
         
         //
     }
