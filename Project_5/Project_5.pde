@@ -2,13 +2,20 @@
     Paper Sheet;
     Room Hoop;
     Item Test;
+
     ArrayList<Item> item_inv = new ArrayList<Item>(0);
     ArrayList<Room> rooms = new ArrayList<Room>(0);
     ArrayList<Item> ChosenItems = new ArrayList<Item>(0);
+    ArrayList<Message> Messages = new ArrayList<Message>(0);
+
     PImage close;
     PImage left;
     PImage right;
+    PImage intro;
     
+    PFont inconsolata;
+
+    boolean hellaa = true;
 
 // State Tracking
     int room_iterator = 0;
@@ -39,89 +46,95 @@ void setup() {
     close = loadImage("close.png");
     left = loadImage("left.png");
     right = loadImage("right.png");
-    // // Final Table Init
-    // ChosenItems = new Table();
+    intro = loadImage("intro.jpg");
 
-    // ChosenItems.addColumn("tag");
-    // ChosenItems.addColumn("file");
-    // ChosenItems.addColumn("x");
-    // ChosenItems.addColumn("y");
-
+    inconsolata = createFont("Inconsolata-Regular.ttf", 20);
     // Object Init
     Sheet = new Paper();
     //Hoop = new Room(1, "1.svg");
     Test = new Item("crow", 100, 200, "crow.png");
 
+    Messages.add(new Message("/> Click anywhere to start..."));
+
     // Room 1
     item_inv.add(new Item("stamp", 80 * vw, 20 * vh, "stamp.png"));
     item_inv.add(new Item("crow", 20 * vw, 20 * vh, "crow.png"));
     item_inv.add(new Item("flower", 70 * vw, 70 * vh, "flower.png"));
-    rooms.add(new Room(1, "1.svg", item_inv.get(0), item_inv.get(1), item_inv.get(2)));
+    rooms.add(new Room(2, "1.svg", item_inv.get(0), item_inv.get(1), item_inv.get(2)));
 
     // Room 2
     item_inv.add(new Item("fingerpick", 25 * vw, 30 * vh, "fingerpick.png"));
     item_inv.add(new Item("key", 20 * vw, 70 * vh, "key.png"));
     item_inv.add(new Item("die", 70 * vw, 60 * vh, "die.png"));
-    rooms.add(new Room(2, "2.svg", item_inv.get(3), item_inv.get(4), item_inv.get(5)));
+    rooms.add(new Room(3, "2.svg", item_inv.get(3), item_inv.get(4), item_inv.get(5)));
 
     // Room 3
     item_inv.add(new Item("kitty", 15 * vw, 35 * vh, "kitty.png"));
     item_inv.add(new Item("glove", 40 * vw, 20 * vh, "glove.png"));
     item_inv.add(new Item("cleaner", 75 * vw, 70 * vh, "cleaner.png"));
-    rooms.add(new Room(3, "3.svg", item_inv.get(6), item_inv.get(7), item_inv.get(8)));
+    rooms.add(new Room(4, "3.svg", item_inv.get(6), item_inv.get(7), item_inv.get(8)));
 
     // Room 4
     item_inv.add(new Item("clover", 10 * vw, vh * 60, "clover.png"));
     item_inv.add(new Item("gascan", 75 * vw, 30 * vh, "gascan.png"));
     item_inv.add(new Item("coin", 55 * vw, 15 * vh, "coin.png"));
-    rooms.add(new Room(4, "5.svg", item_inv.get(9), item_inv.get(10), item_inv.get(11)));
+    rooms.add(new Room(5, "5.svg", item_inv.get(9), item_inv.get(10), item_inv.get(11)));
 
     // Room 5
     item_inv.add(new Item("cheese", 55 * vw, 40 * vh, "cheese.png"));
     item_inv.add(new Item("man", 30 * vw, 5 * vh, "man.png"));
     item_inv.add(new Item("telephone", 55 * vw, 75 * vh, "telephone.png"));
-    rooms.add(new Room(5, "5.svg", item_inv.get(12), item_inv.get(13), item_inv.get(14)));
+    rooms.add(new Room(6, "5.svg", item_inv.get(12), item_inv.get(13), item_inv.get(14)));
 
     // Room 6
     item_inv.add(new Item("dagger", 45 * vw, 20 * vh, "dagger.png"));
     item_inv.add(new Item("lips", 25 * vw, 45 * vh, "lips.png"));
     item_inv.add(new Item("breadtag", 50 * vw, 60 * vh, "breadtag.png"));
-    rooms.add(new Room(6, "6.svg", item_inv.get(15), item_inv.get(16), item_inv.get(17)));
+    rooms.add(new Room(7, "6.svg", item_inv.get(15), item_inv.get(16), item_inv.get(17)));
 
     // Room 7
     item_inv.add(new Item("hand", 20 * vw, 10 * vh, "hand.png"));
     item_inv.add(new Item("bottlecap", 50 * vw, 20 * vh, "bottlecap.png"));
     item_inv.add(new Item("toast", 60 * vw, 80 * vh, "toast.png"));
-    rooms.add(new Room(7, "7.svg", item_inv.get(18), item_inv.get(19), item_inv.get(20)));
+    rooms.add(new Room(8, "7.svg", item_inv.get(18), item_inv.get(19), item_inv.get(20)));
 
     // Room 8
     item_inv.add(new Item("propeller", 40 * vw, 70 * vh, "propeller.png"));
     item_inv.add(new Item("cat", 20 * vw, 30 * vh, "cat.png"));
     item_inv.add(new Item("chain", 80 * vw, 40 * vh, "chain.png"));
-    rooms.add(new Room(8, "8.svg", item_inv.get(21), item_inv.get(22), item_inv.get(23)));
+    rooms.add(new Room(9, "8.svg", item_inv.get(21), item_inv.get(22), item_inv.get(23)));
 
     // Room 9
     item_inv.add(new Item("eye", 40 * vw, 15 * vh, "eye.png"));
     item_inv.add(new Item("pick", 40 * vw, 76 * vh, "pick.png"));
     item_inv.add(new Item("bird", 80 * vw, 30 * vh, "bird.png"));
-    rooms.add(new Room(9, "9.svg", item_inv.get(24), item_inv.get(25), item_inv.get(26)));
+    rooms.add(new Room(10, "9.svg", item_inv.get(24), item_inv.get(25), item_inv.get(26)));
 }
 
 // Each Frame
 void draw() {
     //Rooms[room_iterator].room_driver();
-    background(#FFFFFF);
-
-    
-
 
     // RunText(teckst, 10*vw, 80*vw, width - 10*vw, height - 10*vw, Incrementor hell = new Incrementor() );
 
-    if (room_iterator < 0) {
+    if (room_iterator < 1) {
         // run intro screen
+        if (hellaa) {
+            image(intro, 0, 0, width, height);
+            hellaa = false;
+        }
+        push();
+            fill(0);
+            textFont(inconsolata);
+            textSize(20); 
+            Messages.get(0).print(7 * vw, 90 * vh, 40);
+        pop();
+        
+        //
     }
-    else if (room_iterator >= 0 && room_iterator < 9) {
-        rooms.get(room_iterator).room_driver();
+    else if (room_iterator >= 1 && room_iterator < 10) {
+        background(#FFFFFF);
+        rooms.get(room_iterator - 1).room_driver();
     }
     else {
         // run tunnel function
@@ -157,31 +170,31 @@ boolean overRect(float x, float y, float w, float h) {
 
 // Event Functions
 void mousePressed() {
-    if (room_iterator < 0) { // startscreen
-        
+    if (room_iterator < 1) { // startscreen
+        room_iterator++;
     }
-    else if (room_iterator <= 9) { // body
+    else if (room_iterator >= 1 && room_iterator <= 10) { // body
         if (stage_iterator == 0) {
-            if(overRect(rooms.get(room_iterator).i1.pos_x, rooms.get(room_iterator).i1.pos_y, rooms.get(room_iterator).i1.it_width, rooms.get(room_iterator).i1.it_height)) {
-                ChosenItems.add(rooms.get(room_iterator).i1);
+            if(overRect(rooms.get(room_iterator - 1).i1.pos_x, rooms.get(room_iterator - 1).i1.pos_y, rooms.get(room_iterator - 1).i1.it_width, rooms.get(room_iterator - 1).i1.it_height)) {
+                ChosenItems.add(rooms.get(room_iterator - 1).i1);
                 stage_iterator++;
             }
-            if(overRect(rooms.get(room_iterator).i2.pos_x, rooms.get(room_iterator).i2.pos_y, rooms.get(room_iterator).i2.it_width, rooms.get(room_iterator).i2.it_height)) {
-                ChosenItems.add(rooms.get(room_iterator).i2);
+            if(overRect(rooms.get(room_iterator - 1).i2.pos_x, rooms.get(room_iterator - 1).i2.pos_y, rooms.get(room_iterator - 1).i2.it_width, rooms.get(room_iterator - 1).i2.it_height)) {
+                ChosenItems.add(rooms.get(room_iterator - 1).i2);
                 stage_iterator++;
             }
-            if(overRect(rooms.get(room_iterator).i3.pos_x, rooms.get(room_iterator).i3.pos_y, rooms.get(room_iterator).i3.it_width, rooms.get(room_iterator).i3.it_height)) {
-                ChosenItems.add(rooms.get(room_iterator).i3);
+            if(overRect(rooms.get(room_iterator - 1).i3.pos_x, rooms.get(room_iterator - 1).i3.pos_y, rooms.get(room_iterator - 1).i3.it_width, rooms.get(room_iterator - 1).i3.it_height)) {
+                ChosenItems.add(rooms.get(room_iterator - 1).i3);
                 stage_iterator++;
             }
         }
         else if (stage_iterator == 1) {
             if (overRect(Sheet.x1, Sheet.y1, Sheet.x2 - Sheet.x1, Sheet.y2 - Sheet.y1)) {
-                ChosenItems.get(room_iterator).set_final(mouseX, mouseY);
+                ChosenItems.get(room_iterator - 1).set_final(mouseX, mouseY);
                 stage_iterator++;
             }
             else {
-                ChosenItems.remove(room_iterator);
+                ChosenItems.remove(room_iterator - 1);
                 --stage_iterator;
             }
         }

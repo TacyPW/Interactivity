@@ -59,7 +59,7 @@ class Room {
             Sheet.render_transparency();
             Sheet.render_paper();
             if (overRect(Sheet.x1, Sheet.y1, Sheet.x2 , Sheet.y2 )) {
-                Sheet.item_brush(ChosenItems.get(room_iterator));
+                Sheet.item_brush(ChosenItems.get(room_iterator - 1));
             }
             else {
                 blendMode(MULTIPLY);
@@ -79,11 +79,11 @@ class Room {
         else if (stage_iterator == 3) {
             if (overRect(0, 0, width / 2, height)) {
                 image(left, mouseX - 20, mouseY - 20, 40, 40);
-                println("left");
+                //println("left");
             }
             else if (overRect(width / 2, 0, width / 2, height)) {
                 image(right, mouseX - 20, mouseY - 20, 40, 40);
-                println("right");
+                //println("right");
             }
         }
         
