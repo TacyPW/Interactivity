@@ -3,25 +3,38 @@ public class Message {
     int length;
     int wlen = 0;
     String workingc = " ";
+    boolean not_rendered = true;
 
+    public Message() {
+        content = "";
+    }
 
     public Message (String contentin) {
         content = contentin;
-        length = content.length();
     }
 
     void print(float x, float y, float size) {
-        textFont(inconsolata, 20);
-        textSize(size);
-        text(workingc, x, y);
+        length = content.length();
+        push();
+            textFont(inconsolata, size);
+            textSize(size);
+            fill(0);
+            text(workingc, x, y);
+        pop();
         if (workingc.length() < content.length()) {
             this.update();
         }
     }
 
     void print(float x, float y, float w, float h, float size) {
+        length = content.length();
         push();
-            textFont(inconsolata, 20);
+            noStroke();
+            fill(255, 100);
+            rect(x, y, w, h);
+        pop();
+        push();
+            textFont(inconsolata, size);
             textSize(size);
             fill(0);
             text(workingc, x, y, w, h);

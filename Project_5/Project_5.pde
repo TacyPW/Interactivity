@@ -7,6 +7,7 @@
     ArrayList<Room> rooms = new ArrayList<Room>(0);
     ArrayList<Item> ChosenItems = new ArrayList<Item>(0);
     ArrayList<Message> Messages = new ArrayList<Message>(0);
+    Tunnel conclusion;
 
     PImage close;
     PImage left;
@@ -16,9 +17,10 @@
     PFont inconsolata;
 
     boolean hellaa = true;
+    boolean bitch = true;
 
 // State Tracking
-    int room_iterator = 0;
+    int room_iterator = 11;
     int stage_iterator = 0;
     int collage_iterator = 0;
 
@@ -27,6 +29,7 @@
     int item_3 = collage_iterator * 3 - 3;
 
     int tincr = 0;
+
 
 // Units
     float vw;
@@ -56,59 +59,72 @@ void setup() {
 
     Messages.add(new Message("/> Click anywhere to start..."));
 
-    // Room 1
-    item_inv.add(new Item("stamp", 80 * vw, 20 * vh, "stamp.png"));
-    item_inv.add(new Item("crow", 20 * vw, 20 * vh, "crow.png"));
-    item_inv.add(new Item("flower", 70 * vw, 70 * vh, "flower.png"));
-    rooms.add(new Room(2, "1.svg", item_inv.get(0), item_inv.get(1), item_inv.get(2)));
 
-    // Room 2
-    item_inv.add(new Item("fingerpick", 25 * vw, 30 * vh, "fingerpick.png"));
-    item_inv.add(new Item("key", 20 * vw, 70 * vh, "key.png"));
-    item_inv.add(new Item("die", 70 * vw, 60 * vh, "die.png"));
-    rooms.add(new Room(3, "2.svg", item_inv.get(3), item_inv.get(4), item_inv.get(5)));
+    conclusion = new Tunnel(11, "10.svg", "11.svg", "12.svg");
 
-    // Room 3
-    item_inv.add(new Item("kitty", 15 * vw, 35 * vh, "kitty.png"));
-    item_inv.add(new Item("glove", 40 * vw, 20 * vh, "glove.png"));
-    item_inv.add(new Item("cleaner", 75 * vw, 70 * vh, "cleaner.png"));
-    rooms.add(new Room(4, "3.svg", item_inv.get(6), item_inv.get(7), item_inv.get(8)));
+    // ROOMS & ITEMS
+        // Room 1
+        item_inv.add(new Item("stamp", 80 * vw, 20 * vh, "stamp.png"));
+        item_inv.add(new Item("crow", 20 * vw, 20 * vh, "crow.png"));
+        item_inv.add(new Item("flower", 70 * vw, 70 * vh, "flower.png"));
+        rooms.add(new Room(2, "1.svg", item_inv.get(0), item_inv.get(1), item_inv.get(2)));
 
-    // Room 4
-    item_inv.add(new Item("clover", 10 * vw, vh * 60, "clover.png"));
-    item_inv.add(new Item("gascan", 75 * vw, 30 * vh, "gascan.png"));
-    item_inv.add(new Item("coin", 55 * vw, 15 * vh, "coin.png"));
-    rooms.add(new Room(5, "4.svg", item_inv.get(9), item_inv.get(10), item_inv.get(11)));
+        // Room 2
+        item_inv.add(new Item("fingerpick", 25 * vw, 30 * vh, "fingerpick.png"));
+        item_inv.add(new Item("key", 20 * vw, 70 * vh, "key.png"));
+        item_inv.add(new Item("die", 70 * vw, 60 * vh, "die.png"));
+        rooms.add(new Room(3, "2.svg", item_inv.get(3), item_inv.get(4), item_inv.get(5)));
 
-    // Room 5
-    item_inv.add(new Item("cheese", 55 * vw, 40 * vh, "cheese.png"));
-    item_inv.add(new Item("man", 30 * vw, 5 * vh, "man.png"));
-    item_inv.add(new Item("telephone", 55 * vw, 75 * vh, "telephone.png"));
-    rooms.add(new Room(6, "5.svg", item_inv.get(12), item_inv.get(13), item_inv.get(14)));
+        // Room 3
+        item_inv.add(new Item("kitty", 15 * vw, 35 * vh, "kitty.png"));
+        item_inv.add(new Item("glove", 40 * vw, 20 * vh, "glove.png"));
+        item_inv.add(new Item("cleaner", 75 * vw, 70 * vh, "cleaner.png"));
+        rooms.add(new Room(4, "3.svg", item_inv.get(6), item_inv.get(7), item_inv.get(8)));
 
-    // Room 6
-    item_inv.add(new Item("dagger", 45 * vw, 20 * vh, "dagger.png"));
-    item_inv.add(new Item("lips", 25 * vw, 45 * vh, "lips.png"));
-    item_inv.add(new Item("breadtag", 50 * vw, 60 * vh, "breadtag.png"));
-    rooms.add(new Room(7, "6.svg", item_inv.get(15), item_inv.get(16), item_inv.get(17)));
+        // Room 4
+        item_inv.add(new Item("clover", 10 * vw, vh * 60, "clover.png"));
+        item_inv.add(new Item("gascan", 75 * vw, 30 * vh, "gascan.png"));
+        item_inv.add(new Item("coin", 55 * vw, 15 * vh, "coin.png"));
+        rooms.add(new Room(5, "4.svg", item_inv.get(9), item_inv.get(10), item_inv.get(11)));
 
-    // Room 7
-    item_inv.add(new Item("hand", 20 * vw, 10 * vh, "hand.png"));
-    item_inv.add(new Item("bottlecap", 50 * vw, 20 * vh, "bottlecap.png"));
-    item_inv.add(new Item("toast", 60 * vw, 80 * vh, "toast.png"));
-    rooms.add(new Room(8, "7.svg", item_inv.get(18), item_inv.get(19), item_inv.get(20)));
+        // Room 5
+        item_inv.add(new Item("cheese", 55 * vw, 40 * vh, "cheese.png"));
+        item_inv.add(new Item("man", 30 * vw, 5 * vh, "man.png"));
+        item_inv.add(new Item("telephone", 55 * vw, 75 * vh, "telephone.png"));
+        rooms.add(new Room(6, "5.svg", item_inv.get(12), item_inv.get(13), item_inv.get(14)));
 
-    // Room 8
-    item_inv.add(new Item("propeller", 40 * vw, 70 * vh, "propeller.png"));
-    item_inv.add(new Item("cat", 20 * vw, 30 * vh, "cat.png"));
-    item_inv.add(new Item("chain", 80 * vw, 40 * vh, "chain.png"));
-    rooms.add(new Room(9, "8.svg", item_inv.get(21), item_inv.get(22), item_inv.get(23)));
+        // Room 6
+        item_inv.add(new Item("dagger", 45 * vw, 20 * vh, "dagger.png"));
+        item_inv.add(new Item("lips", 25 * vw, 45 * vh, "lips.png"));
+        item_inv.add(new Item("breadtag", 50 * vw, 60 * vh, "breadtag.png"));
+        rooms.add(new Room(7, "6.svg", item_inv.get(15), item_inv.get(16), item_inv.get(17)));
 
-    // Room 9
-    item_inv.add(new Item("eye", 40 * vw, 15 * vh, "eye.png"));
-    item_inv.add(new Item("pick", 40 * vw, 76 * vh, "pick.png"));
-    item_inv.add(new Item("bird", 80 * vw, 30 * vh, "bird.png"));
-    rooms.add(new Room(10, "9.svg", item_inv.get(24), item_inv.get(25), item_inv.get(26)));
+        // Room 7
+        item_inv.add(new Item("hand", 20 * vw, 10 * vh, "hand.png"));
+        item_inv.add(new Item("bottlecap", 50 * vw, 20 * vh, "bottlecap.png"));
+        item_inv.add(new Item("toast", 60 * vw, 80 * vh, "toast.png"));
+        rooms.add(new Room(8, "7.svg", item_inv.get(18), item_inv.get(19), item_inv.get(20)));
+
+        // Room 8
+        item_inv.add(new Item("propeller", 40 * vw, 70 * vh, "propeller.png"));
+        item_inv.add(new Item("cat", 20 * vw, 30 * vh, "cat.png"));
+        item_inv.add(new Item("chain", 80 * vw, 40 * vh, "chain.png"));
+        rooms.add(new Room(9, "8.svg", item_inv.get(21), item_inv.get(22), item_inv.get(23)));
+
+        // Room 9
+        item_inv.add(new Item("eye", 40 * vw, 15 * vh, "eye.png"));
+        item_inv.add(new Item("pick", 40 * vw, 76 * vh, "pick.png"));
+        item_inv.add(new Item("bird", 80 * vw, 30 * vh, "bird.png"));
+        rooms.add(new Room(10, "9.svg", item_inv.get(24), item_inv.get(25), item_inv.get(26)));
+    //
+
+    ChosenItems.add(item_inv.get(0));
+    ChosenItems.add(item_inv.get(1));
+    ChosenItems.add(item_inv.get(2));
+    ChosenItems.add(item_inv.get(3));
+    ChosenItems.add(item_inv.get(4));
+
+    
 }
 
 // Each Frame
@@ -117,6 +133,19 @@ void draw() {
 
     // RunText(teckst, 10*vw, 80*vw, width - 10*vw, height - 10*vw, Incrementor hell = new Incrementor() );
 
+    //conclusion.render_back();
+
+    
+    conclusion.tunnel_driver();
+
+    if (bitch) {
+        println(conclusion.observation);
+        println(conclusion.fortune);
+        bitch = false;
+    }
+    
+
+    /*
     if (room_iterator < 1) {
         // run intro screen
         if (hellaa) {
@@ -134,6 +163,7 @@ void draw() {
     else {
         // run tunnel function
     }
+    */
 
 
     // // Test Objects
@@ -208,7 +238,25 @@ void mousePressed() {
         }
     }
     else { // Base Case = endscreen
+        if (conclusion.zoom < 2) {
+            conclusion.zoom++;
+            conclusion.update();
+        }
+        else {
+            if (conclusion.stage == 0) {
+                conclusion.stage++;
+            }
+            else if (conclusion.stage == 1) {
+                conclusion.stage++;
+            }
+            else if (conclusion.stage == 2) {
+                conclusion.stage++;
+            }
+        }
         
+        // if (conclusion.stage == 0) {
+        //     conclusion.stage++;
+        // }
     }
 
 
