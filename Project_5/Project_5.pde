@@ -40,7 +40,8 @@ String teckst = "hello my name is tacy prins woodlief hopefully im not too much 
 // Run Once
 void setup() {
     // Basic Setup
-    fullScreen();
+    // fullScreen();
+    size(800, 500);
     background(#FFFFFF);
     pixelDensity(2);
     vw = width / 100;

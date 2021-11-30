@@ -12,8 +12,9 @@
     float render_x;
     float render_y;
     
-    float it_width = 200;
-    float it_height = 200;
+    float it_width = width / 8;
+    float it_height = width / 8;
+
 
     boolean final_set = false;
 
