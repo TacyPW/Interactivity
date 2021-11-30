@@ -23,7 +23,7 @@
     boolean bitch = true;
 
 // State Tracking
-    int room_iterator = 11;
+    int room_iterator = 0;
     int stage_iterator = 0;
     int collage_iterator = 0;
 
@@ -42,8 +42,8 @@
 // Run Once
 void setup() {
     // Basic Setup
-    // fullScreen();
-    size(800, 500);
+    fullScreen();
+    //size(800, 500);
     background(#FFFFFF);
     pixelDensity(2);
     vw = width / 100;
@@ -123,11 +123,11 @@ void setup() {
         rooms.add(new Room(10, "9.svg", item_inv.get(24), item_inv.get(25), item_inv.get(26)));
     //
 
-    ChosenItems.add(item_inv.get(0));
-    ChosenItems.add(item_inv.get(1));
-    ChosenItems.add(item_inv.get(2));
-    ChosenItems.add(item_inv.get(3));
-    ChosenItems.add(item_inv.get(4));
+    // ChosenItems.add(item_inv.get(0));
+    // ChosenItems.add(item_inv.get(1));
+    // ChosenItems.add(item_inv.get(2));
+    // ChosenItems.add(item_inv.get(3));
+    // ChosenItems.add(item_inv.get(4));
 
     
 }
@@ -140,17 +140,9 @@ void draw() {
 
     //conclusion.render_back();
 
-    
-    conclusion.tunnel_driver();
 
-    if (bitch) {
-        println(conclusion.observation);
-        println(conclusion.fortune);
-        bitch = false;
-    }
     
 
-    /*
     if (room_iterator < 1) {
         // run intro screen
         if (hellaa) {
@@ -166,9 +158,9 @@ void draw() {
         rooms.get(room_iterator - 1).room_driver();
     }
     else {
-        // run tunnel function
+        conclusion.tunnel_driver();
     }
-    */
+
 
 
     // // Test Objects
@@ -203,7 +195,7 @@ void mousePressed() {
     if (room_iterator < 1) { // startscreen
         room_iterator++;
     }
-    else if (room_iterator >= 1 && room_iterator <= 10) { // body
+    else if (room_iterator >= 1 && room_iterator < 10) { // body
         if (stage_iterator == 0) {
             if(overRect(rooms.get(room_iterator - 1).i1.pos_x, rooms.get(room_iterator - 1).i1.pos_y, rooms.get(room_iterator - 1).i1.it_width, rooms.get(room_iterator - 1).i1.it_height)) {
                 ChosenItems.add(rooms.get(room_iterator - 1).i1);
