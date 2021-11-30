@@ -37,6 +37,8 @@ public class Tunnel extends Room {
 
         script.add(new Message("> Hello young lad"));
         script.add(new Message("> That's quite a collection you've got there"));
+        script.add(new Message("Save it"));
+        script.add(new Message("I hate it"));
 
         fortunes.add("you are a very plucky young fellow");
         fortunes.add("you will be successful if you pursue a career in agriculture");
@@ -63,8 +65,9 @@ public class Tunnel extends Room {
                 observation.content += " and ";
             }
         }
+        
         fortune.content = "> that means ";
-        fortune.content += fortunes.get(0);
+        fortune.content += fortunes.get(int(random(0, (fortunes.size() - 1))));
         // fortune += "that means" + fortunes.get(int(random(0, fortunes.size() - 1)));
     }
 
@@ -80,26 +83,39 @@ public class Tunnel extends Room {
                 if (script.get(0).not_rendered) {
                     this.render_back();
                 }
-                script.get(0).print(5 * vw, 80 * vh, 50 * vw, 100 * vh - 5 * vw, fontsize);
+                script.get(0).print(5 * vw, 5 * vw, 20 * vw, 70 * vh, fontsize);
             }
             else if (this.stage == 1) {
                 if (script.get(1).not_rendered) {
                     this.render_back();
                 }
-                script.get(1).print(5 * vw, 80 * vh, 50 * vw, 100 * vh - 5 * vw, fontsize);
+                script.get(1).print(5 * vw, 5 * vw, 20 * vw, 70 * vh, fontsize);
             }
             else if (stage == 2) {
+                if (script.get(2).not_rendered) {
+                    this.render_back();
+                }
+                push();
+                    fill(255, 200);
+                    noStroke();
+                    rect(0, 0, width, height);
+                pop();
+                
+                script.get(2).print(10 * vw, 20 * vw, 30 * vw, height - 40 * vw, fontsize, true);
+                script.get(3).print(width / 2 + 10 * vw, 20 * vw, 30 * vw, height - 40 * vw, fontsize, true);
+            }
+            else if (this.stage == 3) {
                 conclusion.set_fortune(ChosenItems);
                 if (observation.not_rendered) {
                     this.render_back();
                 }
-                observation.print(5 * vw, 80 * vh, 50 * vw, 100 * vh - 5 * vw, fontsize);
+                observation.print(5 * vw, 5 * vw, 20 * vw, 70 * vh, fontsize);
             }
-            else if (this.stage == 3) {
+            else if (this.stage == 4) {
                 if (fortune.not_rendered) {
                     this.render_back();
                 }
-                fortune.print(5 * vw, 80 * vh, 50 * vw, 100 * vh - 5 * vw, fontsize);
+                fortune.print(5 * vw, 5 * vw, 20 * vw, 70 * vh, fontsize);
             }
         }
     }

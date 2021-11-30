@@ -3,10 +3,10 @@ public class Paper {
     PShape bak = loadShape("paper.svg");
 
     // coords
-    float x1 = 100;
-    float y1 = 100;
-    float x2 = width - 200;
-    float y2 = height - 200;
+    float x1 = 5 * vw;
+    float y1 = 5 * vw;
+    float x2 = width - 10 * vw;
+    float y2 = height - 10 * vw;
 
     // desc
     String description;
@@ -32,8 +32,26 @@ public class Paper {
         // }
     }
 
+    void render_paper(boolean half) {
+        if (half) {
+            if (displayDensity() == 2) {
+                push();
+                    scale(0.5, 0.5);
+                    render_transparency();
+                    shape(bak, width / 20, width / 20, width - (width / 10), height - (width / 10));
+                    for (Item chosen : ChosenItems) {
+                        if (chosen.final_set) {
+                            chosen.final_render();
+                        }
+                    }                                   
+                pop();
+            }
+        }
+    }
+
     public void render_transparency() {
         fill(255, 100);
+        noStroke();
         rect(0, 0, width, height);
     }
 

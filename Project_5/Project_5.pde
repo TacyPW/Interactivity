@@ -1,3 +1,5 @@
+// Libraries
+    import processing.pdf.*;
 // Initialization
     Paper Sheet;
     Room Hoop;
@@ -15,7 +17,7 @@
     PImage intro;
     
     PFont inconsolata;
-    fontsize = width / 40;
+    float fontsize;
 
     boolean hellaa = true;
     boolean bitch = true;
@@ -36,7 +38,6 @@
     float vw;
     float vh;
 //
-String teckst = "hello my name is tacy prins woodlief hopefully im not too much of a flop";
 
 // Run Once
 void setup() {
@@ -47,6 +48,8 @@ void setup() {
     pixelDensity(2);
     vw = width / 100;
     vh = height / 100;
+
+    fontsize = width / 40;
 
     close = loadImage("close.png");
     left = loadImage("left.png");
@@ -252,7 +255,26 @@ void mousePressed() {
                 conclusion.stage++;
             }
             else if (conclusion.stage == 2) {
+                if (overRect(10 * vw, 20 * vw, 30 * vw, height - 40 * vw)) {
+                    println("save");
+                    beginRecord(PDF, "collage.pdf");
+                    Sheet.render_paper(true);
+                    endRecord();
+                    //conclusion.stage++;
+                }
+                else if (overRect(width / 2 + 10 * vw, 20 * vw, 30 * vw, height - 40 * vw)) {
+                    println("fuck");
+                    conclusion.stage++;
+                }
+            }
+            else if (conclusion.stage == 3) {
                 conclusion.stage++;
+            }
+            else if (conclusion.stage == 4) {
+                conclusion.stage++;
+            }
+            else {
+                exit();
             }
         }
         
