@@ -50,6 +50,9 @@ public class Tunnel extends Room {
         fortunes.add("your mom is currently at the grocery store.");
         fortunes.add("you need to shower");        
         fortunes.add("you need a new pair of shoes");
+        fortunes.add("you are pregnant");
+        fortunes.add("someone is talking about you right now (only good things)");
+        fortunes.add("everything you touch turns to gold");
         // fortunes.add("you ");
     }
 
