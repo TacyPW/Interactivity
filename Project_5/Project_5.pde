@@ -15,6 +15,7 @@
     PImage intro;
     
     PFont inconsolata;
+    fontsize = width / 40;
 
     boolean hellaa = true;
     boolean bitch = true;
@@ -153,7 +154,7 @@ void draw() {
             image(intro, 0, 0, width, height);
             hellaa = false;
         }
-        Messages.get(0).print(7 * vw, 90 * vh, 40);
+        Messages.get(0).print(7 * vw, 90 * vh, fontsize);
         
         //
     }

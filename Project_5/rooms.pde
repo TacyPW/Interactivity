@@ -63,7 +63,7 @@ class Room {
             }
             else {
                 blendMode(MULTIPLY);
-                image(close, mouseX - 20, mouseY - 20, 40, 40);
+                image(close, mouseX - fontsize / 2, mouseY - fontsize / 2, fontsize, fontsize);
                 blendMode(BLEND);
             }
             
@@ -73,16 +73,16 @@ class Room {
             Sheet.render_transparency();
             Sheet.render_paper();
             blendMode(MULTIPLY);
-            image(close, mouseX - 20, mouseY - 20, 40, 40);
+            image(close, mouseX - fontsize / 2, mouseY - fontsize / 2, fontsize, fontsize);
             blendMode(BLEND);
         }
         else if (stage_iterator == 3) {
             if (overRect(0, 0, width / 2, height)) {
-                image(left, mouseX - 20, mouseY - 20, 40, 40);
+                image(left, mouseX - fontsize / 2, mouseY - fontsize / 2, fontsize, fontsize);
                 //println("left");
             }
             else if (overRect(width / 2, 0, width / 2, height)) {
-                image(right, mouseX - 20, mouseY - 20, 40, 40);
+                image(right, mouseX - fontsize / 2, mouseY - fontsize / 2, fontsize, fontsize);
                 //println("right");
             }
         }

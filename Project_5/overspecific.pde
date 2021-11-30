@@ -80,26 +80,26 @@ public class Tunnel extends Room {
                 if (script.get(0).not_rendered) {
                     this.render_back();
                 }
-                script.get(0).print(5 * vw, 80 * vh, 50 * vw, 100 * vh - 5 * vw, 40);
+                script.get(0).print(5 * vw, 80 * vh, 50 * vw, 100 * vh - 5 * vw, fontsize);
             }
             else if (this.stage == 1) {
                 if (script.get(1).not_rendered) {
                     this.render_back();
                 }
-                script.get(1).print(5 * vw, 80 * vh, 50 * vw, 100 * vh - 5 * vw, 40);
+                script.get(1).print(5 * vw, 80 * vh, 50 * vw, 100 * vh - 5 * vw, fontsize);
             }
             else if (stage == 2) {
                 conclusion.set_fortune(ChosenItems);
                 if (observation.not_rendered) {
                     this.render_back();
                 }
-                observation.print(5 * vw, 80 * vh, 50 * vw, 100 * vh - 5 * vw, 40);
+                observation.print(5 * vw, 80 * vh, 50 * vw, 100 * vh - 5 * vw, fontsize);
             }
-            else if (this.stage == 1) {
-                if (script.get(1).not_rendered) {
+            else if (this.stage == 3) {
+                if (fortune.not_rendered) {
                     this.render_back();
                 }
-                script.get(1).print(5 * vw, 80 * vh, 50 * vw, 100 * vh - 5 * vw, 40);
+                fortune.print(5 * vw, 80 * vh, 50 * vw, 100 * vh - 5 * vw, fontsize);
             }
         }
     }

@@ -29,8 +29,9 @@ public class Message {
     void print(float x, float y, float w, float h, float size) {
         length = content.length();
         push();
-            noStroke();
-            fill(255, 100);
+            stroke(0);
+            strokeWeight(width / 1600);
+            fill(255, 200);
             rect(x, y, w, h);
         pop();
         push();
