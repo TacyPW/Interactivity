@@ -2,8 +2,9 @@
     import processing.pdf.*;
 // Initialization
     Paper Sheet;
-    Room Hoop;
-    Item Test;
+
+    // Room Hoop;
+    // Item Test;
 
     ArrayList<Item> item_inv = new ArrayList<Item>(0);
     ArrayList<Room> rooms = new ArrayList<Room>(0);
@@ -22,8 +23,10 @@
     boolean hellaa = true;
     boolean bitch = true;
 
+    PGraphics collage;
+
 // State Tracking
-    int room_iterator = 0;
+    int room_iterator = 10;
     int stage_iterator = 0;
     int collage_iterator = 0;
 
@@ -42,8 +45,8 @@
 // Run Once
 void setup() {
     // Basic Setup
-    fullScreen();
-    //size(800, 500);
+    // fullScreen();
+    size(1512, 942);
     background(#FFFFFF);
     pixelDensity(2);
     vw = width / 100;
@@ -62,10 +65,11 @@ void setup() {
     //Hoop = new Room(1, "1.svg");
     Test = new Item("crow", 100, 200, "crow.png");
 
-    Messages.add(new Message("/> Click anywhere to start..."));
-
+    Messages.add(new Message("> Click anywhere to start..."));
 
     conclusion = new Tunnel(11, "10.svg", "11.svg", "12.svg");
+
+    collage = createGraphics()
 
     // ROOMS & ITEMS
         // Room 1
@@ -81,9 +85,9 @@ void setup() {
         rooms.add(new Room(3, "2.svg", item_inv.get(3), item_inv.get(4), item_inv.get(5)));
 
         // Room 3
-        item_inv.add(new Item("kitty", 15 * vw, 35 * vh, "kitty.png"));
+        item_inv.add(new Item("kitty", 10 * vw, 30 * vh, "kitty.png"));
         item_inv.add(new Item("glove", 40 * vw, 20 * vh, "glove.png"));
-        item_inv.add(new Item("cleaner", 75 * vw, 70 * vh, "cleaner.png"));
+        item_inv.add(new Item("cleaner", 75 * vw, 80 * vh, "cleaner.png"));
         rooms.add(new Room(4, "3.svg", item_inv.get(6), item_inv.get(7), item_inv.get(8)));
 
         // Room 4
@@ -93,27 +97,27 @@ void setup() {
         rooms.add(new Room(5, "4.svg", item_inv.get(9), item_inv.get(10), item_inv.get(11)));
 
         // Room 5
-        item_inv.add(new Item("cheese", 55 * vw, 40 * vh, "cheese.png"));
+        item_inv.add(new Item("cheese", 55 * vw, 45 * vh, "cheese.png"));
         item_inv.add(new Item("man", 30 * vw, 5 * vh, "man.png"));
-        item_inv.add(new Item("telephone", 55 * vw, 75 * vh, "telephone.png"));
+        item_inv.add(new Item("telephone", 45 * vw, 80 * vh, "telephone.png"));
         rooms.add(new Room(6, "5.svg", item_inv.get(12), item_inv.get(13), item_inv.get(14)));
 
         // Room 6
-        item_inv.add(new Item("dagger", 45 * vw, 20 * vh, "dagger.png"));
-        item_inv.add(new Item("lips", 25 * vw, 45 * vh, "lips.png"));
-        item_inv.add(new Item("breadtag", 50 * vw, 60 * vh, "breadtag.png"));
+        item_inv.add(new Item("dagger", 35 * vw, 20 * vh, "dagger.png"));
+        item_inv.add(new Item("lips", 10 * vw, 45 * vh, "lips.png"));
+        item_inv.add(new Item("breadtag", 70 * vw, 60 * vh, "breadtag.png"));
         rooms.add(new Room(7, "6.svg", item_inv.get(15), item_inv.get(16), item_inv.get(17)));
 
         // Room 7
         item_inv.add(new Item("hand", 20 * vw, 10 * vh, "hand.png"));
-        item_inv.add(new Item("bottlecap", 50 * vw, 20 * vh, "bottlecap.png"));
-        item_inv.add(new Item("toast", 60 * vw, 80 * vh, "toast.png"));
+        item_inv.add(new Item("bottlecap", 45 * vw, 50 * vh, "bottlecap.png"));
+        item_inv.add(new Item("toast", 80 * vw, 30 * vh, "toast.png"));
         rooms.add(new Room(8, "7.svg", item_inv.get(18), item_inv.get(19), item_inv.get(20)));
 
         // Room 8
-        item_inv.add(new Item("propeller", 40 * vw, 70 * vh, "propeller.png"));
-        item_inv.add(new Item("cat", 20 * vw, 30 * vh, "cat.png"));
-        item_inv.add(new Item("chain", 80 * vw, 40 * vh, "chain.png"));
+        item_inv.add(new Item("propeller", 20 * vw, 25 * vh, "propeller.png"));
+        item_inv.add(new Item("cat", 40 * vw, 50 * vh, "cat.png"));
+        item_inv.add(new Item("chain", 80 * vw, 30 * vh, "chain.png"));
         rooms.add(new Room(9, "8.svg", item_inv.get(21), item_inv.get(22), item_inv.get(23)));
 
         // Room 9
@@ -133,16 +137,7 @@ void setup() {
 }
 
 // Each Frame
-void draw() {
-    //Rooms[room_iterator].room_driver();
-
-    // RunText(teckst, 10*vw, 80*vw, width - 10*vw, height - 10*vw, Incrementor hell = new Incrementor() );
-
-    //conclusion.render_back();
-
-
-    
-
+void draw() {   
     if (room_iterator < 1) {
         // run intro screen
         if (hellaa) {
@@ -160,22 +155,6 @@ void draw() {
     else {
         conclusion.tunnel_driver();
     }
-
-
-
-    // // Test Objects
-    //  Hoop.render_back();
-    // // Test.render_item();
-    // item_inv.get(1).render_item(mouseX, mouseY);
-    // for (int i = 0; i < item_inv.size(); ++i) {
-    //     item_inv.get(i).render_item();
-    // }
-    // Sheet.render_paper();
-    // Sheet.item_brush(item_inv.get(2));
-
-    // if ((collage_iterator > 9) || (collage_iterator < 0)) {
-    //     collage_iterator = 0;
-    // }
 }
 
 // Global Functions
@@ -263,10 +242,13 @@ void mousePressed() {
                 conclusion.stage++;
             }
             else if (conclusion.stage == 4) {
-                conclusion.stage++;
+                if (overRect(85 * vw, 85 * vh, 10 * vw, 10 * vh)) {
+                    conclusion.stage++;
+                    exit();
+                }
             }
             else {
-                exit();
+                //exit();
             }
         }
         

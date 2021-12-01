@@ -39,6 +39,7 @@ public class Tunnel extends Room {
         script.add(new Message("> That's quite a collection you've got there"));
         script.add(new Message("Save it"));
         script.add(new Message("I hate it"));
+        script.add(new Message("exit();"));
 
         fortunes.add("you are a very plucky young fellow");
         fortunes.add("you will be successful if you pursue a career in agriculture");
@@ -112,13 +113,17 @@ public class Tunnel extends Room {
                 if (observation.not_rendered) {
                     this.render_back();
                 }
-                observation.print(5 * vw, 5 * vw, 20 * vw, 70 * vh, fontsize);
+                observation.print(5 * vw, 5 * vw, 20 * vw, 70 * vh, fontsize * 0.8);
             }
             else if (this.stage == 4) {
                 if (fortune.not_rendered) {
                     this.render_back();
                 }
                 fortune.print(5 * vw, 5 * vw, 20 * vw, 70 * vh, fontsize);
+                script.get(4).print(85 * vw, 85 * vh, 10 * vw, 10 * vh, fontsize, true);
+            }
+            else {
+                exit();
             }
         }
     }
