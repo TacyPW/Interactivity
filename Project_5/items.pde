@@ -15,7 +15,6 @@
     float it_width = width / 8;
     float it_height = width / 8;
 
-
     boolean final_set = false;
 
     public Item(String tg, float x, float y, String file) {
