@@ -46,8 +46,8 @@ Line bruh;
 //PShape startimg = loadShape("introscreen.svg");
 
 void setup() {
-	// fullScreen();
-	size(600, 600);
+	fullScreen();
+	//size(600, 600);
 	pixelDensity(2);
 
 	startimg = loadImage("startimg.jpg");
