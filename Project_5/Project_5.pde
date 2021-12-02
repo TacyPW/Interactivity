@@ -46,7 +46,7 @@
 void setup() {
     // Basic Setup
     // fullScreen();
-    size(1512, 942);
+    size(756, 471);
 
     background(#FFFFFF);
     pixelDensity(2);
