@@ -61,6 +61,7 @@ public class Tunnel extends Room {
         super.back_img = frames[zoom];
     }
 
+
     public void set_fortune(ArrayList<Item> to_observe) {
         observation.content = "> I see that you've chosen ";
         for (int i = 0; i < to_observe.size(); ++i) {
@@ -87,13 +88,13 @@ public class Tunnel extends Room {
                 if (script.get(0).not_rendered) {
                     this.render_back();
                 }
-                script.get(0).print(5 * vw, 5 * vw, 20 * vw, 70 * vh, fontsize);
+                script.get(0).print(5 * vw, 5 * vw, 20 * vw, 70 * vh, fontsize, false);
             }
             else if (this.stage == 1) {
                 if (script.get(1).not_rendered) {
                     this.render_back();
                 }
-                script.get(1).print(5 * vw, 5 * vw, 20 * vw, 70 * vh, fontsize);
+                script.get(1).print(5 * vw, 5 * vw, 20 * vw, 70 * vh, fontsize, false);
             }
             else if (stage == 2) {
                 if (script.get(2).not_rendered) {
@@ -113,13 +114,13 @@ public class Tunnel extends Room {
                 if (observation.not_rendered) {
                     this.render_back();
                 }
-                observation.print(5 * vw, 5 * vw, 20 * vw, 70 * vh, fontsize * 0.8);
+                observation.print(5 * vw, 5 * vw, 20 * vw, 70 * vh, fontsize * 0.8, false);
             }
             else if (this.stage == 4) {
                 if (fortune.not_rendered) {
                     this.render_back();
                 }
-                fortune.print(5 * vw, 5 * vw, 20 * vw, 70 * vh, fontsize);
+                fortune.print(5 * vw, 5 * vw, 20 * vw, 70 * vh, fontsize, false);
                 script.get(4).print(85 * vw, 85 * vh, 10 * vw, 10 * vh, fontsize, true);
             }
             else {

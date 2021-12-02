@@ -53,6 +53,30 @@ public class Message {
                 print(x, y, w, h, size);
             pop();
         }
+        else {
+            length = content.length();
+            float c = fontsize / 2;
+            textFont(inconsolata, size);
+            textSize(size);
+            textLeading(1.15 * size);
+             
+
+            //box_height = lines * (size + 1.5*size + textAscent() + textDescent());
+            push();
+                stroke(0);
+                strokeWeight(1);
+                fill(255, 200);
+                //rect(x, y, w, 50, c, c, c, c);
+            pop();
+            push();
+                
+                fill(0);
+                text(workingc, x + c, y + c, w - fontsize, 100 * vh);
+            pop();
+            if (workingc.length() < content.length()) {
+                this.update();
+            }
+        }
     }
 
     void update() {

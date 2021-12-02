@@ -26,7 +26,7 @@
     PGraphics collage;
 
 // State Tracking
-    int room_iterator = 10;
+    int room_iterator = 0;
     int stage_iterator = 0;
     int collage_iterator = 0;
 
@@ -62,14 +62,12 @@ void setup() {
     inconsolata = createFont("Inconsolata-Regular.ttf", 20);
     // Object Init
     Sheet = new Paper();
-    //Hoop = new Room(1, "1.svg");
-    Test = new Item("crow", 100, 200, "crow.png");
 
+    // collage = createGraphics(width, height);
+    
     Messages.add(new Message("> Click anywhere to start..."));
 
     conclusion = new Tunnel(11, "10.svg", "11.svg", "12.svg");
-
-    collage = createGraphics()
 
     // ROOMS & ITEMS
         // Room 1
@@ -228,10 +226,10 @@ void mousePressed() {
             else if (conclusion.stage == 2) {
                 if (overRect(10 * vw, 20 * vw, 30 * vw, height - 40 * vw)) {
                     println("save");
-                    beginRecord(PDF, "collage.pdf");
-                    Sheet.render_paper(true);
-                    endRecord();
-                    //conclusion.stage++;
+                    background(255);
+                    Sheet.render_paper();
+                    save("collage.tif");
+                    conclusion.stage++;
                 }
                 else if (overRect(width / 2 + 10 * vw, 20 * vw, 30 * vw, height - 40 * vw)) {
                     println("fuck");
