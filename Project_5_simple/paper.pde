@@ -1,6 +1,7 @@
 public class Paper {
     // background
     PShape bak = loadShape("paper.svg");
+    ArrayList<Item> ChosenItems = new ArrayList<Item>(0);
 
     // coords
     float x1 = 5 * vw;
@@ -20,15 +21,15 @@ public class Paper {
     public void render_paper() {
         render_transparency();
         shape(bak, x1, y1, x2, y2);
-        for (Item chosen : ChosenItems) {
-            if (chosen.final_set) {
-                chosen.final_render();
+        for (int i = 0; i < this.ChosenItems.size(); i++) {
+            if (this.ChosenItems.get(i).final_set) {
+                println(this.ChosenItems.get(i).tag + frameCount);
+                this.ChosenItems.get(i).final_render();
             }
         }   
         
-        
         // for (int i = 0; i < collage_iterator; ++i) {
-        //     ChosenItems[i].final_render();
+        //     this.ChosenItems[i].final_render();
         // }
     }
 
@@ -39,8 +40,9 @@ public class Paper {
                     scale(0.5, 0.5);
                     render_transparency();
                     shape(bak, width / 20, width / 20, width - (width / 10), height - (width / 10));
-                    for (Item chosen : ChosenItems) {
+                    for (Item chosen : this.ChosenItems) {
                         if (chosen.final_set) {
+                            println(chosen.tag, "final");
                             chosen.final_render();
                         }
                     }                                   
@@ -60,7 +62,7 @@ public class Paper {
     }
 
     public void item_chooser(int index) {
-        ChosenItems.add(item_inv.get(index));
+        this.ChosenItems.add(new Item(item_inv.get(index).tag, mouseX, mouseY, item_inv.get(index).filee));
         println("added" + index);
     }
 

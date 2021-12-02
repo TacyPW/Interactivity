@@ -32,67 +32,42 @@ class Room {
         back_img.setStroke(#000000);
         shape(this.back_img, 0, 0, width, height);
     }
-
     
-     void render_items() {
+    void render_items() {
         blendMode(MULTIPLY);
-        i1.render_item();
-        i2.render_item();
-        i3.render_item();
         blendMode(BLEND);
     }
-    
-    public void item_chooser(int index) {
-        ChosenItems.add(item_inv.get(index));
-        println("added" + index);
+
+    void render_items(ArrayList<Item> a) {
+        blendMode(MULTIPLY);
+        for (int i = 0; i < a.size(); ++i) {
+            a.get(i).render_item();
+        }
+        blendMode(BLEND);
     }
 
     void room_driver() {
-        this.render_back();
         if (stage_iterator <= 0) {
-            this.render_items();
-
-
+            this.render_back();
+            this.render_items(item_inv);
         }
         else if (stage_iterator == 1) {
             this.render_back();
-            Sheet.render_transparency();
             Sheet.render_paper();
+
             if (overRect(Sheet.x1, Sheet.y1, Sheet.x2 , Sheet.y2 )) {
-                Sheet.item_brush(ChosenItems.get(room_iterator - 1));
+                Sheet.item_brush(Sheet.ChosenItems.get(chosennum - 1));
             }
             else {
                 blendMode(MULTIPLY);
                 image(close, mouseX - fontsize / 2, mouseY - fontsize / 2, fontsize, fontsize);
                 blendMode(BLEND);
             }
-            
+            render_buttons();
         }
         else if (stage_iterator == 2) {
             this.render_back();
-            Sheet.render_transparency();
-            Sheet.render_paper();
-            blendMode(MULTIPLY);
-            image(close, mouseX - fontsize / 2, mouseY - fontsize / 2, fontsize, fontsize);
-            blendMode(BLEND);
+            this.render_items(item_inv);
         }
-        else if (stage_iterator == 3) {
-            if (overRect(0, 0, width / 2, height)) {
-                image(left, mouseX - fontsize / 2, mouseY - fontsize / 2, fontsize, fontsize);
-                //println("left");
-            }
-            else if (overRect(width / 2, 0, width / 2, height)) {
-                image(right, mouseX - fontsize / 2, mouseY - fontsize / 2, fontsize, fontsize);
-                //println("right");
-            }
-        }
-        
-        
-        /*
-        else if (stage_iterator == 2) {
-            
-        }
-        */
     } 
-        
 }

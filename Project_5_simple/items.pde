@@ -15,13 +15,29 @@
     float it_width = width / 8;
     float it_height = width / 8;
 
+    String filee = "";
+
     boolean final_set = false;
+
+    public Item(String tg, String file) {
+        tag = tg;
+        pos_x = 100;
+        pos_y = 100;
+        filee = file;
+        item_img = loadImage(file);
+    }
 
     public Item(String tg, float x, float y, String file) {
         tag = tg;
         pos_x = x;
         pos_y = y;
+        filee = file;
         item_img = loadImage(file);
+    }
+    
+    void set_pos(float x, float y) {
+        this.pos_x = x;
+        this.pos_y = y;
     }
     
     void render_item() {
