@@ -52,7 +52,7 @@
         render_x = itX;
         render_y = itY;
         this.final_set = true;
-        println("set");
+        // println("set");
     }
  }
 

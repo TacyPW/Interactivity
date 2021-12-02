@@ -46,10 +46,12 @@ Line bruh;
 //PShape startimg = loadShape("introscreen.svg");
 
 void setup() {
-	fullScreen();
+	// fullScreen();
+	size(600, 600);
+	pixelDensity(2);
 
 	startimg = loadImage("startimg.jpg");
-    // size(600, 600);
+    
     paddleW = new Paddle('w');
 	paddleW.set_h(paddleW.green);
     paddleA = new Paddle('a');
