@@ -69,22 +69,22 @@ void setup() {
     inconsolata = createFont("Inconsolata-Regular.ttf", 20);
 
     // Object Init
-    Sheet = new Paper();
+        Sheet = new Paper();
 
     // ROOMS & ITEMS
         // Room 1
         rooms.add(new Room(1, "1.svg"));
 
         item_inv.add(new Item("stamp", "stamp.png"));
-        item_inv.add(new Item("crow",  "crow.png"));
-        item_inv.add(new Item("flower",  "flower.png"));
-        item_inv.add(new Item("fingerpick",  "fingerpick.png"));
-        item_inv.add(new Item("key",  "key.png"));
-        item_inv.add(new Item("die",  "die.png"));
-        item_inv.add(new Item("kitty",  "kitty.png"));
-        item_inv.add(new Item("glove",  "glove.png"));
-        item_inv.add(new Item("cleaner",  "cleaner.png"));
-        item_inv.add(new Item("clover",  "clover.png"));
+        item_inv.add(new Item("crow", "crow.png"));
+        item_inv.add(new Item("flower", "flower.png"));
+        item_inv.add(new Item("fingerpick", "fingerpick.png"));
+        item_inv.add(new Item("key", "key.png"));
+        item_inv.add(new Item("die", "die.png"));
+        item_inv.add(new Item("kitty", "kitty.png"));
+        item_inv.add(new Item("glove", "glove.png"));
+        item_inv.add(new Item("cleaner", "cleaner.png"));
+        item_inv.add(new Item("clover", "clover.png"));
 
         item_inv.get(0).set_pos(20 * vw, 20 * vh);
         item_inv.get(1).set_pos(41 * vw, 8 * vh);
