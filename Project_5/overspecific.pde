@@ -39,14 +39,14 @@ public class Tunnel extends Room {
         script.add(new Message("> That's quite a collection you've got there"));
         script.add(new Message("Save it"));
         script.add(new Message("I hate it"));
-        script.add(new Message("exit();"));
+        script.add(new Message("exit"));
 
         fortunes.add("you are a very plucky young fellow");
         fortunes.add("you will be successful if you pursue a career in agriculture");
         fortunes.add("you haven't thought enough about your last social interaction");
         fortunes.add("you wont ever be truly happy");
         fortunes.add("you are cool");
-        fortunes.add("you are wierd");
+        fortunes.add("you are weirdly obsessed with grapes");
         fortunes.add("you aren't going to trader joe's later today.");
         fortunes.add("your mom is currently at the grocery store.");
         fortunes.add("you need to shower");        
