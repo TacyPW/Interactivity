@@ -1,10 +1,14 @@
 // Libraries
     import processing.pdf.*;
+    import processing.sound.*;
+
 // Initialization
     Paper Sheet;
 
-    // Room Hoop;
-    // Item Test;
+    SoundFile back;
+    SoundFile pick;
+    SoundFile place;
+    SoundFile step;
 
     ArrayList<Item> item_inv = new ArrayList<Item>(0);
     ArrayList<Room> rooms = new ArrayList<Room>(0);
@@ -36,6 +40,7 @@
 
     int tincr = 0;
 
+    int exit_frame = 0;
 
 // Units
     float vw;
@@ -52,6 +57,13 @@ void setup() {
     pixelDensity(2);
     vw = width / 100;
     vh = height / 100;
+
+    back = new SoundFile(this, "back.wav");
+    back.amp(0.15);
+    back.loop();
+    pick = new SoundFile(this, "pick.wav");
+    place = new SoundFile(this, "place.wav");
+    // step = new SoundFile(this, "back.wav");
 
     fontsize = width / 40;
 
@@ -177,20 +189,24 @@ void mousePressed() {
         if (stage_iterator == 0) {
             if(overRect(rooms.get(room_iterator - 1).i1.pos_x, rooms.get(room_iterator - 1).i1.pos_y, rooms.get(room_iterator - 1).i1.it_width, rooms.get(room_iterator - 1).i1.it_height)) {
                 ChosenItems.add(rooms.get(room_iterator - 1).i1);
+                pick.play();
                 stage_iterator++;
             }
             if(overRect(rooms.get(room_iterator - 1).i2.pos_x, rooms.get(room_iterator - 1).i2.pos_y, rooms.get(room_iterator - 1).i2.it_width, rooms.get(room_iterator - 1).i2.it_height)) {
                 ChosenItems.add(rooms.get(room_iterator - 1).i2);
+                pick.play();
                 stage_iterator++;
             }
             if(overRect(rooms.get(room_iterator - 1).i3.pos_x, rooms.get(room_iterator - 1).i3.pos_y, rooms.get(room_iterator - 1).i3.it_width, rooms.get(room_iterator - 1).i3.it_height)) {
                 ChosenItems.add(rooms.get(room_iterator - 1).i3);
+                pick.play();
                 stage_iterator++;
             }
         }
         else if (stage_iterator == 1) {
             if (overRect(Sheet.x1, Sheet.y1, Sheet.x2 - Sheet.x1, Sheet.y2 - Sheet.y1)) {
                 ChosenItems.get(room_iterator - 1).set_final(mouseX, mouseY);
+                place.play();
                 stage_iterator++;
             }
             else {
@@ -243,11 +259,16 @@ void mousePressed() {
             else if (conclusion.stage == 4) {
                 if (overRect(85 * vw, 85 * vh, 10 * vw, 10 * vh)) {
                     conclusion.stage++;
-                    exit();
+                    exit_frame = frameCount;
+                    println(exit_frame);
                 }
+
+            }
+            else if (conclusion.stage == 5) {
+                
             }
             else {
-                //exit();
+                exit();
             }
         }
         

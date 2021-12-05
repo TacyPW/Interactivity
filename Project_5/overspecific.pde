@@ -16,6 +16,9 @@ public class Tunnel extends Room {
     int stage = 0;
     int zoom = 0;
 
+    boolean ended = false;
+    PImage end = loadImage("outro.png");
+
     public Tunnel () {
         super(10, "10.svg");
     }
@@ -122,6 +125,16 @@ public class Tunnel extends Room {
                 }
                 fortune.print(5 * vw, 5 * vw, 20 * vw, 70 * vh, fontsize, false);
                 script.get(4).print(85 * vw, 85 * vh, 10 * vw, 10 * vh, fontsize, true);
+            }
+            else if (this.stage == 5) {
+                if (!ended) {
+                    background(255);
+                    image(end, 0, 0, width, height);
+                    ended = true;
+                }
+                if (frameCount > exit_frame + 30) {
+                    exit();
+                }
             }
             else {
                 exit();
