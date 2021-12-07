@@ -249,7 +249,7 @@ void mousePressed() {
                     conclusion.stage++;
                 }
                 else if (overRect(width / 2 + 10 * vw, 20 * vw, 30 * vw, height - 40 * vw)) {
-                    println("fuck");
+                    // println("fuck");
                     conclusion.stage++;
                 }
             }

@@ -132,7 +132,7 @@ public class Tunnel extends Room {
                     image(end, 0, 0, width, height);
                     ended = true;
                 }
-                if (frameCount > exit_frame + 30) {
+                if (frameCount > exit_frame + 60) {
                     exit();
                 }
             }
