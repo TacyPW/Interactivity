@@ -52,11 +52,14 @@ public class Tunnel extends Room {
         fortunes.add("you are weirdly obsessed with grapes");
         fortunes.add("you aren't going to trader joe's later today.");
         fortunes.add("your mom is currently at the grocery store.");
-        fortunes.add("you need to shower");        
-        fortunes.add("you need a new pair of shoes");
-        fortunes.add("you are pregnant");
+        fortunes.add("you need to shower, use some sandalwood scented bodywash");        
+        fortunes.add("you need a new pair of shoes - its time to get cowboy boots");
+        fortunes.add("you are pregnant, the father is an alien");
         fortunes.add("someone is talking about you right now (only good things)");
         fortunes.add("everything you touch turns to gold");
+        fortunes.add("you should go treat yourself with a maple sprinkle donut");
+        fortunes.add("its time to get a spruce scented candle");
+        fortunes.add("you need more western shirts in your wardrobe");
         // fortunes.add("you ");
     }
 
