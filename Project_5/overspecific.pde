@@ -60,6 +60,7 @@ public class Tunnel extends Room {
         fortunes.add("you should go treat yourself with a maple sprinkle donut");
         fortunes.add("its time to get a spruce scented candle");
         fortunes.add("you need more western shirts in your wardrobe");
+        fortunes.add("you need some drama in your life. go slam a door.");
         // fortunes.add("you ");
     }
 
