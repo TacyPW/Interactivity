@@ -8,7 +8,8 @@
     SoundFile back;
     SoundFile pick;
     SoundFile place;
-    SoundFile step;
+    SoundFile step1;
+    SoundFile step2;
 
     ArrayList<Item> item_inv = new ArrayList<Item>(0);
     ArrayList<Room> rooms = new ArrayList<Room>(0);
@@ -29,8 +30,9 @@
 
     PGraphics collage;
 
+    String name;
 // State Tracking
-    int room_iterator = 0;
+    int room_iterator = 10;
     int stage_iterator = 0;
     int collage_iterator = 0;
 
@@ -39,7 +41,7 @@
     int item_3 = collage_iterator * 3 - 3;
 
     int tincr = 0;
-
+    boolean soundstep = false;
     int exit_frame = 0;
 
 // Units
@@ -63,6 +65,9 @@ void setup() {
     back.loop();
     pick = new SoundFile(this, "pick.wav");
     place = new SoundFile(this, "place.wav");
+    step1 = new SoundFile(this, "step1.wav");
+    step2 = new SoundFile(this, "step2.wav");
+    
     // step = new SoundFile(this, "back.wav");
 
     fontsize = width / 40;
@@ -219,18 +224,22 @@ void mousePressed() {
         }
         else if (stage_iterator == 3) {
             if (overRect(0, 0, width / 2, height)) {
+                
                 room_iterator++;
                 stage_iterator = 0;
+                step1.play();
             }
             else if (overRect(width / 2, 0, width / 2, height)) {
                 room_iterator++;
                 stage_iterator = 0;
+                step2.play();
             }
         }
     }
     else { // Base Case = endscreen
         if (conclusion.zoom < 2) {
             conclusion.zoom++;
+            step1.play();
             conclusion.update();
         }
         else {
@@ -245,7 +254,8 @@ void mousePressed() {
                     println("save");
                     background(255);
                     Sheet.render_paper();
-                    save("collage.tif");
+                    name = "collage" + str(millis()) + str(second()) + ".jpg";
+                    save(name);
                     conclusion.stage++;
                 }
                 else if (overRect(width / 2 + 10 * vw, 20 * vw, 30 * vw, height - 40 * vw)) {
