@@ -1,3 +1,23 @@
+/**
+Welcome to Collage Collector, a game where you get to create 
+your own story based on a set of items and choices you make 
+as you walk through a strange set of rooms. And then you get
+to be read for your choices by an iconic old lady who has 
+a lot to say.
+
+The game is somewhat of an homage to Sean Tejarachi's Craphound
+zines - some of the imagery was taken from these. Overall though, 
+the ethos of the zines is what I wanted to convey, with their 
+spontaneous collections of items and myriad of stories. 
+The aesthetic is based on the visual style of risograph printing,
+with its spot color methodology, layered effect, and lofi feel. 
+
+I really hope you enjoy!
+-Tacy Prins Woodlief
+*/
+
+
+
 // Libraries
     import processing.pdf.*;
     import processing.sound.*;
@@ -32,7 +52,7 @@
 
     String name;
 // State Tracking
-    int room_iterator = 10;
+    int room_iterator = 0;
     int stage_iterator = 0;
     int collage_iterator = 0;
 
